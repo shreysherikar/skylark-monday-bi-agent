@@ -1,177 +1,177 @@
 wo_serial,wo_deal_name,wo_customer_code,wo_normalized_client,wo_sector,wo_owner,wo_po_date,matched_deal_row_id,matched_deal_name,matched_client_code,matched_deal_sector,matched_deal_owner,matched_deal_status,matched_deal_date,confidence_tier,match_score,match_notes
-SDPLDEAL-075,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-29,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 105, margin 0)"
-SDPLDEAL-101,Appa,WOCOMPANY_038,COMPANY038,Powerline,OWNER_002,2025-07-31,306.0,Appa,COMPANY038,Renewables,OWNER_001,Won,2025-06-12,MATCHED_HIGH,83.0,Exact Deal Name & Client Code match (83 pts): Exact Deal Name; Exact Client Code; Conflicting Sector; Status: Won; Date within 49d
-SDPLDEAL-002,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-16,,,,,,,,UNMATCHED,70.0,"Ambiguous multiple candidates (best score 70, runner-up 65, margin 5)"
-SDPLDEAL-003,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-08,,,,,,,,UNMATCHED,70.0,"Ambiguous multiple candidates (best score 70, runner-up 65, margin 5)"
-SDPLDEAL-004,SpongeBob,WOCOMPANY_032,COMPANY032,Powerline,OWNER_003,2025-05-06,,,,,,,,UNMATCHED,45.0,"Ambiguous multiple candidates (best score 45, runner-up 25, margin 20)"
-SDPLDEAL-005,Edward Elric,WOCOMPANY_008,COMPANY008,Renewables,OWNER_003,2025-05-16,,,,,,,,UNMATCHED,-5.0,Below confidence threshold (best score -5): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 11d
-SDPLDEAL-001,Pumbaa,WOCOMPANY_047,COMPANY047,Renewables,OWNER_005,2025-05-15,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Conflicting Sector; Status: Won
-SDPLDEAL-006,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-21,,,,,,,,UNMATCHED,70.0,"Ambiguous multiple candidates (best score 70, runner-up 70, margin 0)"
-SDPLDEAL-007,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-22,,,,,,,,UNMATCHED,70.0,"Ambiguous multiple candidates (best score 70, runner-up 70, margin 0)"
-SDPLDEAL-008,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-009,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-010,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-011,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-012,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-013,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-014,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-015,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-016,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-017,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-018,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-019,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-020,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-021,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-022,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-024,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-023,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-025,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-026,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-027,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-028,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-029,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-030,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-12.0,Below confidence threshold (best score -12): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 47d
-SDPLDEAL-031,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-12.0,Below confidence threshold (best score -12): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 47d
-SDPLDEAL-032,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-12.0,Below confidence threshold (best score -12): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 47d
-SDPLDEAL-033,Jessie,WOCOMPANY_043,COMPANY043,Mining,OWNER_001,2025-04-10,274.0,Jessie,COMPANY005,Others,OWNER_003,Won,2025-01-16,MATCHED_FUZZY,75.0,"Fuzzy composite match (75 pts, margin 40): Exact Deal Name; Related Sector (others); Status: Won; Date within 84d"
+SDPLDEAL-075,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-29,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-101,Appa,WOCOMPANY_038,COMPANY038,Powerline,OWNER_002,2025-07-31,255.0,Appa,COMPANY005,Others,OWNER_003,Won,,MATCHED_FUZZY,70.0,"Fuzzy composite match (70 pts, margin 40): Exact Deal Name; Related Sector (others); Status: Won"
+SDPLDEAL-002,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-16,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-003,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-08,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-004,SpongeBob,WOCOMPANY_032,COMPANY032,Powerline,OWNER_003,2025-05-06,211.0,SpongeBob,COMPANY153,Renewables,OWNER_003,Won,,MATCHED_FUZZY,55.0,"Fuzzy composite match (55 pts, margin 25): Exact Deal Name; Conflicting Sector; Matching Owner; Status: Won"
+SDPLDEAL-005,Edward Elric,WOCOMPANY_008,COMPANY008,Renewables,OWNER_003,2025-05-16,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-001,Pumbaa,WOCOMPANY_047,COMPANY047,Renewables,OWNER_005,2025-05-15,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-006,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-21,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-007,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-05-22,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-008,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-009,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-010,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-011,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-012,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-013,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-014,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-015,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-016,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-017,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-018,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-019,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-020,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-021,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-022,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-024,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-023,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-025,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-026,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-027,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-028,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-029,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-030,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-031,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-032,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-033,Jessie,WOCOMPANY_043,COMPANY043,Mining,OWNER_001,2025-04-10,274.0,Jessie,COMPANY005,Others,OWNER_003,Won,,MATCHED_FUZZY,70.0,"Fuzzy composite match (70 pts, margin 40): Exact Deal Name; Related Sector (others); Status: Won"
 SDPLDEAL-034,Naruto,WOCOMPANY_001,COMPANY001,Renewables,OWNER_003,2025-05-27,,,,,,,,UNMATCHED,10.0,Below confidence threshold (best score 10): Exact Deal Name; Conflicting Sector; Status: Open
-SDPLDEAL-035,Inosuke,WOCOMPANY_045,COMPANY045,Railways,OWNER_003,2025-05-13,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Conflicting Sector; Status: Won; Date within 116d
-SDPLDEAL-037,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2025-04-25,,,,,,,,UNMATCHED,100.0,"Ambiguous multiple candidates (best score 100, runner-up 98, margin 2)"
-SDPLDEAL-038,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,100.0,"Ambiguous multiple candidates (best score 100, runner-up 90, margin 10)"
-SDPLDEAL-040,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-06-11,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-041,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-06-11,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-042,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-06-11,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-043,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 82d
-SDPLDEAL-044,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-046,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-047,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-048,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-049,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-050,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-06-20,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 98, margin 7)"
-SDPLDEAL-051,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_005,2025-06-17,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-053,Mr. Krabs,WOCOMPANY_031,COMPANY031,Mining,OWNER_004,2025-01-21,,,,,,,,UNMATCHED,80.0,"Ambiguous multiple candidates (best score 80, runner-up 80, margin 0)"
-SDPLDEAL-054,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-05-14,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-055,Asuna,WOCOMPANY_018,COMPANY018,Mining,OWNER_001,2023-04-11,,,,,,,,UNMATCHED,-50.0,Below confidence threshold (best score -50): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date distant (764d)
+SDPLDEAL-035,Inosuke,WOCOMPANY_045,COMPANY045,Railways,OWNER_003,2025-05-13,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Related Sector (others); Matching Owner; Dead Deal Status
+SDPLDEAL-037,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2025-04-25,330.0,Alias_162,COMPANY086,Mining,OWNER_001,Won,2025-12-17,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-038,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2025-04-10,330.0,Alias_162,COMPANY086,Mining,OWNER_001,Won,2025-12-17,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-040,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-06-11,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-041,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-06-11,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-042,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-06-11,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-043,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-044,Tanjiro,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-046,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-047,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-048,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-049,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-050,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-06-20,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-051,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_005,2025-06-17,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-053,Mr. Krabs,WOCOMPANY_031,COMPANY031,Mining,OWNER_004,2025-01-21,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-054,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-05-14,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-055,Asuna,WOCOMPANY_018,COMPANY018,Mining,OWNER_001,2023-04-11,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
 SDPLDEAL-056,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_008,2025-02-28,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
-SDPLDEAL-057,Asuna,WOCOMPANY_018,COMPANY018,Mining,OWNER_001,2024-07-12,,,,,,,,UNMATCHED,-30.0,Below confidence threshold (best score -30): Exact Deal Name; Conflicting Sector; Dead Deal Status
-SDPLDEAL-058,Gohan,WOCOMPANY_026,COMPANY026,Construction,OWNER_001,2025-03-28,,,,,,,,UNMATCHED,15.0,Below confidence threshold (best score 15): Exact Deal Name; Related Sector (others); Dead Deal Status; Date within 161d
-SDPLDEAL-060,Powerpuff Girls,WOCOMPANY_039,COMPANY039,Mining,OWNER_001,2025-01-23,237.0,Powerpuff Girls,COMPANY113,Mining,OWNER_003,Won,2025-11-27,MATCHED_FUZZY,80.0,"Fuzzy composite match (80 pts, margin 1079): Exact Deal Name; Matching Sector; Status: Won"
-SDPLDEAL-061,Rafiki,WOCOMPANY_048,COMPANY048,Mining,OWNER_003,2022-09-29,,,,,,,,UNMATCHED,80.0,"Ambiguous multiple candidates (best score 80, runner-up 80, margin 0)"
-SDPLDEAL-062,Bulbasaur,WOCOMPANY_050,COMPANY050,Others,OWNER_004,2025-03-25,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won; Date within 125d
-SDPLDEAL-063,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-01,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-065,Shanks,WOCOMPANY_012,COMPANY012,Renewables,OWNER_004,2025-04-12,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 146d
-SDPLDEAL-066,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-067,Frieza,WOCOMPANY_022,COMPANY022,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 109d
-SDPLDEAL-068,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-069,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-070,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-071,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-072,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-073,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-28,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 60, margin 5)"
-SDPLDEAL-074,Frieza,WOCOMPANY_022,COMPANY022,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 109d
-SDPLDEAL-076,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,OWNER_003,2025-04-01,,,,,,,,UNMATCHED,-5.0,Below confidence threshold (best score -5): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 24d
-SDPLDEAL-077,Winnie the Pooh,WOCOMPANY_042,COMPANY042,Mining,OWNER_003,2025-04-18,269.0,Winnie the Pooh,COMPANY133,Renewables,OWNER_003,Won,2024-11-17,MATCHED_FUZZY,50.0,Fuzzy unique won match (50 pts): Exact Deal Name; Conflicting Sector; Matching Owner; Status: Won; Date within 152d
-SDPLDEAL-078,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_003,2025-06-06,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-079,Trunks,WOCOMPANY_015,COMPANY015,Railways,OWNER_003,2025-07-01,,,,,,,,UNMATCHED,-5.0,Below confidence threshold (best score -5): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status; Date within 166d
-SDPLDEAL-080,Tuxedo Mask,WOCOMPANY_052,COMPANY052,Mining,OWNER_003,2025-04-01,,,,,,,,UNMATCHED,45.0,"Ambiguous multiple candidates (best score 45, runner-up -999, margin 1044)"
-SDPLDEAL-081,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-06-27,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 98, margin 7)"
-SDPLDEAL-082,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-06-19,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 98, margin 7)"
-SDPLDEAL-083,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 28, margin 15)"
-SDPLDEAL-084,Tuxedo Mask,WOCOMPANY_041,COMPANY041,Renewables,OWNER_003,2025-06-21,,,,,,,,UNMATCHED,45.0,"Ambiguous multiple candidates (best score 45, runner-up -999, margin 1044)"
-SDPLDEAL-085,Luffy,WOCOMPANY_032,COMPANY032,Renewables,OWNER_003,2025-06-21,34.0,Luffy,COMPANY093,Tender,OWNER_003,Open,2025-11-18,MATCHED_FUZZY,75.0,"Fuzzy composite match (75 pts, margin 1074): Exact Deal Name; Related Sector (tender); Matching Owner; Status: Open; Date within 150d"
-SDPLDEAL-086,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2024-07-22,,,,,,,,UNMATCHED,80.0,"Ambiguous multiple candidates (best score 80, runner-up 80, margin 0)"
-SDPLDEAL-087,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2025-08-08,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 105, margin 0)"
-SDPLDEAL-088,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-26,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-089,Obito,WOCOMPANY_023,COMPANY023,Mining,OWNER_003,2025-07-09,,,,,,,,UNMATCHED,15.0,Below confidence threshold (best score 15): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status; Date within 19d
-SDPLDEAL-090,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-15,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 80, margin 5)"
-SDPLDEAL-091,Rafiki,WOCOMPANY_048,COMPANY048,Mining,OWNER_003,2025-07-08,,,,,,,,UNMATCHED,118.0,"Ambiguous multiple candidates (best score 118, runner-up 118, margin 0)"
-SDPLDEAL-092,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-093,Obito,WOCOMPANY_023,COMPANY023,Mining,OWNER_003,2025-07-15,,,,,,,,UNMATCHED,15.0,Below confidence threshold (best score 15): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status; Date within 13d
+SDPLDEAL-057,Asuna,WOCOMPANY_018,COMPANY018,Mining,OWNER_001,2024-07-12,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-058,Gohan,WOCOMPANY_026,COMPANY026,Construction,OWNER_001,2025-03-28,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Related Sector (others); Dead Deal Status
+SDPLDEAL-060,Powerpuff Girls,WOCOMPANY_039,COMPANY039,Mining,OWNER_001,2025-01-23,237.0,Powerpuff Girls,COMPANY113,Mining,OWNER_003,Won,,MATCHED_HIGH,85.0,"High confidence composite match (85 pts, margin 1084): Exact Deal Name; Matching Sector; Status: Won"
+SDPLDEAL-061,Rafiki,WOCOMPANY_048,COMPANY048,Mining,OWNER_003,2022-09-29,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-062,Bulbasaur,WOCOMPANY_050,COMPANY050,Others,OWNER_004,2025-03-25,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-063,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-01,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-065,Shanks,WOCOMPANY_012,COMPANY012,Renewables,OWNER_004,2025-04-12,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-066,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-067,Frieza,WOCOMPANY_022,COMPANY022,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-068,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-069,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-070,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-071,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-072,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-073,Tanjiro,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-28,,,,,,,,UNMATCHED,65.0,"Ambiguous multiple candidates (best score 65, runner-up 65, margin 0)"
+SDPLDEAL-074,Frieza,WOCOMPANY_022,COMPANY022,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-076,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,OWNER_003,2025-04-01,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-077,Winnie the Pooh,WOCOMPANY_042,COMPANY042,Mining,OWNER_003,2025-04-18,269.0,Winnie the Pooh,COMPANY133,Renewables,OWNER_003,Won,,MATCHED_FUZZY,55.0,"Fuzzy composite match (55 pts, margin 1054): Exact Deal Name; Conflicting Sector; Matching Owner; Status: Won"
+SDPLDEAL-078,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_003,2025-06-06,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-079,Trunks,WOCOMPANY_015,COMPANY015,Railways,OWNER_003,2025-07-01,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
+SDPLDEAL-080,Tuxedo Mask,WOCOMPANY_052,COMPANY052,Mining,OWNER_003,2025-04-01,294.0,Tuxedo Mask,COMPANY131,Powerline,OWNER_003,Won,,MATCHED_FUZZY,55.0,"Fuzzy composite match (55 pts, margin 1054): Exact Deal Name; Conflicting Sector; Matching Owner; Status: Won"
+SDPLDEAL-081,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-06-27,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-082,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-06-19,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-083,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-084,Tuxedo Mask,WOCOMPANY_041,COMPANY041,Renewables,OWNER_003,2025-06-21,294.0,Tuxedo Mask,COMPANY131,Powerline,OWNER_003,Won,,MATCHED_FUZZY,55.0,"Fuzzy composite match (55 pts, margin 1054): Exact Deal Name; Conflicting Sector; Matching Owner; Status: Won"
+SDPLDEAL-085,Luffy,WOCOMPANY_032,COMPANY032,Renewables,OWNER_003,2025-06-21,34.0,Luffy,COMPANY093,Tender,OWNER_003,Open,,MATCHED_FUZZY,75.0,"Fuzzy composite match (75 pts, margin 1074): Exact Deal Name; Related Sector (tender); Matching Owner; Status: Open"
+SDPLDEAL-086,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2024-07-22,,,,,,,,UNMATCHED,90.0,"Ambiguous multiple candidates (best score 90, runner-up 85, margin 5)"
+SDPLDEAL-087,Alias_162,WOCOMPANY_052,COMPANY052,Mining,OWNER_001,2025-08-08,330.0,Alias_162,COMPANY086,Mining,OWNER_001,Won,2025-12-17,MATCHED_HIGH,115.0,"High confidence composite match (115 pts, margin 30): Exact Deal Name; Matching Sector; Matching Owner; Status: Won; Date within 131d"
+SDPLDEAL-088,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-26,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-089,Obito,WOCOMPANY_023,COMPANY023,Mining,OWNER_003,2025-07-09,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
+SDPLDEAL-090,Mojo Jojo,WOCOMPANY_036,COMPANY036,Mining,OWNER_001,2025-04-15,,,,,,,,UNMATCHED,95.0,"Ambiguous multiple candidates (best score 95, runner-up 85, margin 10)"
+SDPLDEAL-091,Rafiki,WOCOMPANY_048,COMPANY048,Mining,OWNER_003,2025-07-08,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-092,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-093,Obito,WOCOMPANY_023,COMPANY023,Mining,OWNER_003,2025-07-15,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
 SDPLDEAL-094,GG go,WOCOMPANY_035,COMPANY035,Renewables,OWNER_003,2025-07-10,,,,,,,,UNMATCHED,0.0,Deal name 'GG go' does not exist in Deals board
-SDPLDEAL-095,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-07-17,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 64d
-SDPLDEAL-096,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-07-16,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-097,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-098,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-05-22,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 35, margin 8)"
-SDPLDEAL-099,Goku,WOCOMPANY_003,COMPANY003,Railways,OWNER_003,2025-07-23,32.0,Goku,COMPANY067,Railways,OWNER_003,Open,2025-11-18,MATCHED_HIGH,95.0,"High confidence composite match (95 pts, margin 55): Exact Deal Name; Matching Sector; Matching Owner; Status: Open; Date within 118d"
-SDPLDEAL-100,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-05-28,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up 35, margin 8)"
-SDPLDEAL-102,Nami,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-08-02,36.0,Nami,COMPANY110,Tender,OWNER_004,Open,2025-11-19,MATCHED_FUZZY,60.0,"Fuzzy composite match (60 pts, margin 1059): Exact Deal Name; Related Sector (tender); Status: Open; Date within 109d"
+SDPLDEAL-095,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-07-17,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-096,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-07-16,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-097,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-04-10,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-098,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-05-22,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-099,Goku,WOCOMPANY_003,COMPANY003,Railways,OWNER_003,2025-07-23,32.0,Goku,COMPANY067,Railways,OWNER_003,Open,,MATCHED_HIGH,90.0,"High confidence composite match (90 pts, margin 55): Exact Deal Name; Matching Sector; Matching Owner; Status: Open"
+SDPLDEAL-100,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-05-28,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-102,Nami,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-08-02,,,,,,,,UNMATCHED,50.0,"Ambiguous multiple candidates (best score 50, runner-up -999, margin 1049)"
 SDPLDEAL-103,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-08-01,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
-SDPLDEAL-105,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-08-06,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 84d
-SDPLDEAL-106,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,OWNER_003,2025-08-08,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 105d
-SDPLDEAL-108,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-08-18,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-109,Rafiki,WOCOMPANY_048,COMPANY048,Renewables,OWNER_003,2025-08-11,301.0,Rafiki,COMPANY037,Renewables,OWNER_001,Won,2025-06-11,MATCHED_HIGH,90.0,"High confidence composite match (90 pts, margin 35): Exact Deal Name; Matching Sector; Status: Won; Date within 61d"
-SDPLDEAL-111,Alias_162,WOCOMPANY_052,COMPANY052,Mining,,2024-11-22,,,,,,,,UNMATCHED,80.0,"Ambiguous multiple candidates (best score 80, runner-up 80, margin 0)"
-SDPLDEAL-112,Ben Tennyson,WOCOMPANY_034,COMPANY034,Renewables,,2024-05-16,,,,,,,,UNMATCHED,60.0,"Ambiguous multiple candidates (best score 60, runner-up 60, margin 0)"
-SDPLDEAL-113,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2024-12-20,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 115d
-SDPLDEAL-115,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,,2025-03-24,,,,,,,,UNMATCHED,-12.0,Below confidence threshold (best score -12): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 32d
-SDPLDEAL-116,Ace,WOCOMPANY_013,COMPANY013,Others,,2025-03-05,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 107d
-SDPLDEAL-117,Shanks,WOCOMPANY_012,COMPANY012,Renewables,,2025-03-31,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 134d
-SDPLDEAL-118,Bulbasaur,WOCOMPANY_050,COMPANY050,Renewables,,2025-03-25,311.0,Bulbasaur,COMPANY007,Renewables,OWNER_003,Won,2025-07-28,MATCHED_HIGH,85.0,"High confidence composite match (85 pts, margin 55): Exact Deal Name; Matching Sector; Status: Won; Date within 125d"
-SDPLDEAL-119,Sesshomaru,WOCOMPANY_017,COMPANY017,Renewables,,2024-12-03,,,,,,,,UNMATCHED,-25.0,Below confidence threshold (best score -25): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 161d
-SDPLDEAL-120,Mr. Krabs,WOCOMPANY_031,COMPANY031,Mining,,2025-01-21,,,,,,,,UNMATCHED,80.0,"Ambiguous multiple candidates (best score 80, runner-up 80, margin 0)"
-SDPLDEAL-121,Pumbaa,WOCOMPANY_047,COMPANY047,Renewables,OWNER_004,2025-09-02,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Conflicting Sector; Status: Won; Date distant (385d)
-SDPLDEAL-122,Stitch,WOCOMPANY_044,COMPANY044,Renewables,,2025-04-01,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Conflicting Sector; Status: Won; Date within 74d
-SDPLDEAL-123,Sasuke,WOCOMPANY_002,COMPANY002,Mining,,2024-12-25,2.0,Sasuke,COMPANY091,Mining,OWNER_001,Open,2025-09-15,MATCHED_FUZZY,65.0,"Fuzzy composite match (65 pts, margin 55): Exact Deal Name; Matching Sector; Status: Open"
-SDPLDEAL-124,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,,2025-07-24,,,,,,,,UNMATCHED,25.0,Below confidence threshold (best score 25): Exact Deal Name; Matching Sector; Dead Deal Status
-SDPLDEAL-125,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-09-08,,,,,,,,UNMATCHED,100.0,"Ambiguous multiple candidates (best score 100, runner-up 90, margin 10)"
-SDPLDEAL-126,Gohan,WOCOMPANY_026,COMPANY026,Construction,OWNER_001,2025-09-10,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Related Sector (others); Dead Deal Status; Date within 5d
-SDPLDEAL-127,Kaguya,WOCOMPANY_014,COMPANY014,Railways,OWNER_003,2025-09-12,,,,,,,,UNMATCHED,-30.0,Below confidence threshold (best score -30): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-105,Subaru,WOCOMPANY_019,COMPANY019,Mining,OWNER_001,2025-08-06,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-106,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,OWNER_003,2025-08-08,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-108,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-08-18,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-109,Rafiki,WOCOMPANY_048,COMPANY048,Renewables,OWNER_003,2025-08-11,301.0,Rafiki,COMPANY037,Renewables,OWNER_001,Won,,MATCHED_HIGH,85.0,"High confidence composite match (85 pts, margin 30): Exact Deal Name; Matching Sector; Status: Won"
+SDPLDEAL-111,Alias_162,WOCOMPANY_052,COMPANY052,Mining,,2024-11-22,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-112,Ben Tennyson,WOCOMPANY_034,COMPANY034,Renewables,,2024-05-16,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-113,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2024-12-20,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-115,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,,2025-03-24,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-116,Ace,WOCOMPANY_013,COMPANY013,Others,,2025-03-05,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-117,Shanks,WOCOMPANY_012,COMPANY012,Renewables,,2025-03-31,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-118,Bulbasaur,WOCOMPANY_050,COMPANY050,Renewables,,2025-03-25,311.0,Bulbasaur,COMPANY007,Renewables,OWNER_003,Won,,MATCHED_HIGH,85.0,"High confidence composite match (85 pts, margin 55): Exact Deal Name; Matching Sector; Status: Won"
+SDPLDEAL-119,Sesshomaru,WOCOMPANY_017,COMPANY017,Renewables,,2024-12-03,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-120,Mr. Krabs,WOCOMPANY_031,COMPANY031,Mining,,2025-01-21,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-121,Pumbaa,WOCOMPANY_047,COMPANY047,Renewables,OWNER_004,2025-09-02,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-122,Stitch,WOCOMPANY_044,COMPANY044,Renewables,,2025-04-01,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-123,Sasuke,WOCOMPANY_002,COMPANY002,Mining,,2024-12-25,2.0,Sasuke,COMPANY091,Mining,OWNER_001,Open,,MATCHED_FUZZY,65.0,"Fuzzy composite match (65 pts, margin 55): Exact Deal Name; Matching Sector; Status: Open"
+SDPLDEAL-124,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,,2025-07-24,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-125,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-09-08,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-126,Gohan,WOCOMPANY_026,COMPANY026,Construction,OWNER_001,2025-09-10,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Related Sector (others); Dead Deal Status
+SDPLDEAL-127,Kaguya,WOCOMPANY_014,COMPANY014,Railways,OWNER_003,2025-09-12,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
 SDPLDEAL-128,Bugs Bunny,WOCOMPANY_028,COMPANY028,Railways,OWNER_003,2025-09-12,,,,,,,,UNMATCHED,55.0,"Ambiguous multiple candidates (best score 55, runner-up 55, margin 0)"
-SDPLDEAL-129,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-09-10,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 106d
-SDPLDEAL-130,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-09-11,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 107d
-SDPLDEAL-131,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-17,,,,,,,,UNMATCHED,83.0,"Ambiguous multiple candidates (best score 83, runner-up 83, margin 0)"
-SDPLDEAL-132,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-17,,,,,,,,UNMATCHED,83.0,"Ambiguous multiple candidates (best score 83, runner-up 83, margin 0)"
-SDPLDEAL-134,Gojo,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-09-20,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 111d
-SDPLDEAL-133,Faye Valentine,WOCOMPANY_010,COMPANY010,Renewables,OWNER_003,2024-07-19,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 81d
-SDPLDEAL-135,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-07-25,,,,,,,,UNMATCHED,125.0,"Ambiguous multiple candidates (best score 125, runner-up 118, margin 7)"
-SDPLDEAL-136,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-27,,,,,,,,UNMATCHED,90.0,"Ambiguous multiple candidates (best score 90, runner-up 90, margin 0)"
-SDPLDEAL-137,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-27,,,,,,,,UNMATCHED,90.0,"Ambiguous multiple candidates (best score 90, runner-up 90, margin 0)"
-SDPLDEAL-138,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-09-19,320.0,Alias_160,COMPANY084,Mining,OWNER_001,Won,2025-09-21,MATCHED_FUZZY,125.0,"Fuzzy composite match (125 pts, margin 15): Exact Deal Name; Matching Sector; Matching Owner; Status: Won; Date within 2d"
-SDPLDEAL-139,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-03,,,,,,,,UNMATCHED,98.0,"Ambiguous multiple candidates (best score 98, runner-up 98, margin 0)"
+SDPLDEAL-129,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-09-10,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-130,Armin,WOCOMPANY_020,COMPANY020,Mining,OWNER_001,2025-09-11,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-131,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-17,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-132,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-17,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-134,Gojo,WOCOMPANY_005,COMPANY005,Mining,OWNER_001,2025-09-20,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-133,Faye Valentine,WOCOMPANY_010,COMPANY010,Renewables,OWNER_003,2024-07-19,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-135,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-07-25,,,,,,,,UNMATCHED,135.0,"Ambiguous multiple candidates (best score 135, runner-up 128, margin 7)"
+SDPLDEAL-136,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-27,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-137,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-09-27,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-138,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-09-19,320.0,Alias_160,COMPANY084,Mining,OWNER_001,Won,2025-09-21,MATCHED_HIGH,135.0,"High confidence composite match (135 pts, margin 15): Exact Deal Name; Matching Sector; Matching Owner; Status: Won; Date within 2d"
+SDPLDEAL-139,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-03,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
 SDPLDEAL-140,Trunks,WOCOMPANY_015,COMPANY015,Railways,OWNER_003,2025-10-08,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
-SDPLDEAL-141,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-09,,,,,,,,UNMATCHED,98.0,"Ambiguous multiple candidates (best score 98, runner-up 98, margin 0)"
-SDPLDEAL-142,Inuyasha,WOCOMPANY_016,COMPANY016,Renewables,OWNER_003,2025-10-14,,,,,,,,UNMATCHED,-25.0,Below confidence threshold (best score -25): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 154d
-SDPLDEAL-143,Patrick Star,WOCOMPANY_030,COMPANY030,Others,OWNER_001,2025-10-16,,,,,,,,UNMATCHED,43.0,"Ambiguous multiple candidates (best score 43, runner-up -999, margin 1042)"
-SDPLDEAL-144,Kaguya,WOCOMPANY_014,COMPANY014,Railways,OWNER_003,2025-10-27,,,,,,,,UNMATCHED,-30.0,Below confidence threshold (best score -30): Exact Deal Name; Conflicting Sector; Dead Deal Status
-SDPLDEAL-145,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-27,,,,,,,,UNMATCHED,90.0,"Ambiguous multiple candidates (best score 90, runner-up 90, margin 0)"
-SDPLDEAL-146,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-27,,,,,,,,UNMATCHED,98.0,"Ambiguous multiple candidates (best score 98, runner-up 98, margin 0)"
-SDPLDEAL-147,Katara,WOCOMPANY_037,COMPANY037,Railways,OWNER_003,2025-10-28,,,,,,,,UNMATCHED,35.0,Below confidence threshold (best score 35): Exact Deal Name; Conflicting Sector; Status: Won; Date within 76d
-SDPLDEAL-149,Sakura,WOCOMPANY_002,COMPANY002,Renewables,OWNER_003,2025-10-30,28.0,Sakura,COMPANY009,Renewables,OWNER_003,Open,2025-11-18,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 20): Exact Deal Name; Matching Sector; Matching Owner; Status: Open; Date within 19d"
+SDPLDEAL-141,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-09,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-142,Inuyasha,WOCOMPANY_016,COMPANY016,Renewables,OWNER_003,2025-10-14,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-143,Patrick Star,WOCOMPANY_030,COMPANY030,Others,OWNER_001,2025-10-16,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-144,Kaguya,WOCOMPANY_014,COMPANY014,Railways,OWNER_003,2025-10-27,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-145,Sakura,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-27,,,,,,,,UNMATCHED,75.0,"Ambiguous multiple candidates (best score 75, runner-up 65, margin 10)"
+SDPLDEAL-146,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-10-27,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-147,Katara,WOCOMPANY_037,COMPANY037,Railways,OWNER_003,2025-10-28,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-149,Sakura,WOCOMPANY_002,COMPANY002,Renewables,OWNER_003,2025-10-30,28.0,Sakura,COMPANY009,Renewables,OWNER_003,Open,,MATCHED_HIGH,90.0,"High confidence composite match (90 pts, margin 15): Exact Deal Name; Matching Sector; Matching Owner; Status: Open"
 SDPLDEAL-150,Dolphin,WOCOMPANY_029,COMPANY029,Powerline,OWNER_002,2025-08-12,,,,,,,,UNMATCHED,0.0,Deal name 'Dolphin' does not exist in Deals board
-SDPLDEAL-151,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,OWNER_003,2025-11-06,,,,,,,,UNMATCHED,-30.0,Below confidence threshold (best score -30): Exact Deal Name; Conflicting Sector; Dead Deal Status
-SDPLDEAL-152,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-11-04,,,,,,,,UNMATCHED,125.0,"Ambiguous multiple candidates (best score 125, runner-up 125, margin 0)"
-SDPLDEAL-153,Megumi,WOCOMPANY_007,COMPANY007,Renewables,OWNER_003,2025-04-01,,,,,,,,UNMATCHED,-5.0,Below confidence threshold (best score -5): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 24d
-SDPLDEAL-154,Donkey,WOCOMPANY_040,COMPANY040,Railways,OWNER_003,2025-11-10,,,,,,,,UNMATCHED,45.0,"Ambiguous multiple candidates (best score 45, runner-up 45, margin 0)"
-SDPLDEAL-155,Donkey,WOCOMPANY_040,COMPANY040,Railways,OWNER_003,2025-11-12,,,,,,,,UNMATCHED,45.0,"Ambiguous multiple candidates (best score 45, runner-up 45, margin 0)"
+SDPLDEAL-151,Yuji Itadori,WOCOMPANY_006,COMPANY006,Renewables,OWNER_003,2025-11-06,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-152,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-11-04,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-153,Megumi,WOCOMPANY_007,COMPANY007,Renewables,OWNER_003,2025-04-01,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-154,Donkey,WOCOMPANY_040,COMPANY040,Railways,OWNER_003,2025-11-10,,,,,,,,UNMATCHED,55.0,"Ambiguous multiple candidates (best score 55, runner-up 55, margin 0)"
+SDPLDEAL-155,Donkey,WOCOMPANY_040,COMPANY040,Railways,OWNER_003,2025-11-12,,,,,,,,UNMATCHED,55.0,"Ambiguous multiple candidates (best score 55, runner-up 55, margin 0)"
 SDPLDEAL-156,Golden fish,WOCOMPANY_027,COMPANY027,Mining,OWNER_006,2025-10-16,,,,,,,,UNMATCHED,0.0,Deal name 'Golden fish' does not exist in Deals board
-SDPLDEAL-157,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_005,2025-11-14,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Matching Sector; Dead Deal Status; Date distant (452d)
-SDPLDEAL-158,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-10-23,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Matching Sector; Dead Deal Status; Date distant (430d)
-SDPLDEAL-159,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-11-08,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,2025-01-17,MATCHED_FUZZY,100.0,"Fuzzy composite match (100 pts, margin 15): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
-SDPLDEAL-160,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-11-08,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,2025-01-17,MATCHED_FUZZY,100.0,"Fuzzy composite match (100 pts, margin 15): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
-SDPLDEAL-161,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-11-21,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 105, margin 0)"
-SDPLDEAL-162,Whis,WOCOMPANY_025,COMPANY025,Railways,OWNER_003,2025-12-01,,,,,,,,UNMATCHED,-20.0,Below confidence threshold (best score -20): Exact Deal Name; Conflicting Sector; Dead Deal Status; Date within 112d
-SDPLDEAL-163,Rengoku,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-12-01,,,,,,,,UNMATCHED,-5.0,Below confidence threshold (best score -5): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status; Date within 126d
-SDPLDEAL-164,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-11-27,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Matching Sector; Dead Deal Status; Date distant (465d)
-SDPLDEAL-165,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-11-28,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Matching Sector; Dead Deal Status; Date distant (466d)
-SDPLDEAL-166,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-11-28,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Matching Sector; Dead Deal Status; Date distant (466d)
-SDPLDEAL-167,Obito,WOCOMPANY_023,COMPANY023,Mining,OWNER_003,2025-12-05,,,,,,,,UNMATCHED,-5.0,Below confidence threshold (best score -5): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status; Date within 130d
-SDPLDEAL-168,Stewie Griffin,WOCOMPANY_029,COMPANY029,Powerline,OWNER_002,2025-12-17,,,,,,,,UNMATCHED,50.0,"Ambiguous multiple candidates (best score 50, runner-up 50, margin 0)"
-SDPLDEAL-169,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-12-13,,,,,,,,UNMATCHED,105.0,"Ambiguous multiple candidates (best score 105, runner-up 105, margin 0)"
+SDPLDEAL-157,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_005,2025-11-14,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-158,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-10-23,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-159,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-11-08,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-160,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2025-11-08,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-161,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-11-21,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
+SDPLDEAL-162,Whis,WOCOMPANY_025,COMPANY025,Railways,OWNER_003,2025-12-01,,,,,,,,UNMATCHED,-35.0,Below confidence threshold (best score -35): Exact Deal Name; Conflicting Sector; Dead Deal Status
+SDPLDEAL-163,Rengoku,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-12-01,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
+SDPLDEAL-164,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-11-27,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-165,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-11-28,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-166,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_001,2025-11-28,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-167,Obito,WOCOMPANY_023,COMPANY023,Mining,OWNER_003,2025-12-05,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
+SDPLDEAL-168,Stewie Griffin,WOCOMPANY_029,COMPANY029,Powerline,OWNER_002,2025-12-17,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-169,Scooby-Doo,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-12-13,,,,,,,,UNMATCHED,85.0,"Ambiguous multiple candidates (best score 85, runner-up 85, margin 0)"
 SDPLDEAL-170,Sesshomaru,WOCOMPANY_017,COMPANY017,Renewables,OWNER_003,2025-12-20,,,,,,,,UNMATCHED,-10.0,Below confidence threshold (best score -10): Exact Deal Name; Conflicting Sector; Matching Owner; Dead Deal Status
-SDPLDEAL-171,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-12-17,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Matching Sector; Dead Deal Status; Date within 169d
-SDPLDEAL-172,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-12-12,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
-SDPLDEAL-173,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-12-12,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 105, margin 5)"
+SDPLDEAL-171,Erwin,WOCOMPANY_021,COMPANY021,Mining,OWNER_001,2025-12-17,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
+SDPLDEAL-172,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-12-12,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
+SDPLDEAL-173,Alias_160,WOCOMPANY_051,COMPANY051,Mining,OWNER_001,2025-12-12,,,,,,,,UNMATCHED,120.0,"Ambiguous multiple candidates (best score 120, runner-up 115, margin 5)"
 SDPLDEAL-174,Octopus,WOCOMPANY_002,COMPANY002,Mining,OWNER_003,2025-12-20,,,,,,,,UNMATCHED,0.0,Deal name 'Octopus' does not exist in Deals board
-SDPLDEAL-175,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-12-22,,,,,,,,UNMATCHED,125.0,"Ambiguous multiple candidates (best score 125, runner-up 125, margin 0)"
-SDPLDEAL-176,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-12-22,,,,,,,,UNMATCHED,125.0,"Ambiguous multiple candidates (best score 125, runner-up 125, margin 0)"
-SDPLDEAL-177,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_005,2025-12-16,,,,,,,,UNMATCHED,5.0,Below confidence threshold (best score 5): Exact Deal Name; Matching Sector; Dead Deal Status; Date distant (484d)
+SDPLDEAL-175,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-12-22,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-176,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-12-22,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-177,Alphonse,WOCOMPANY_009,COMPANY009,Renewables,OWNER_005,2025-12-16,,,,,,,,UNMATCHED,20.0,Below confidence threshold (best score 20): Exact Deal Name; Matching Sector; Dead Deal Status
 SDPLDEAL-178,Whale,WOCOMPANY_004,COMPANY004,Powerline,OWNER_002,,,,,,,,,UNMATCHED,0.0,Deal name 'Whale' does not exist in Deals board
-SDPLDEAL-179,Squirtle,WOCOMPANY_049,COMPANY049,Powerline,OWNER_002,2025-12-24,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won; Date within 149d
-SDPLDEAL-180,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-12-29,,,,,,,,UNMATCHED,118.0,"Ambiguous multiple candidates (best score 118, runner-up 118, margin 0)"
+SDPLDEAL-179,Squirtle,WOCOMPANY_049,COMPANY049,Powerline,OWNER_002,2025-12-24,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-180,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2025-12-29,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
 SDPLDEAL-181,Turtle,WOCOMPANY_024,COMPANY024,Mining,OWNER_004,2026-01-01,,,,,,,,UNMATCHED,0.0,Deal name 'Turtle' does not exist in Deals board
-SDPLDEAL-182,Bugs Bunny,WOCOMPANY_028,COMPANY028,Railways,OWNER_003,2026-01-12,,,,,,,,UNMATCHED,63.0,"Ambiguous multiple candidates (best score 63, runner-up 63, margin 0)"
-SDPLDEAL-185,Bulbasaur,WOCOMPANY_050,COMPANY050,Others,OWNER_004,2026-01-09,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won; Date within 165d
-SDPLDEAL-186,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2026-01-06,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,2025-01-17,MATCHED_HIGH,100.0,"High confidence composite match (100 pts, margin 20): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
-SDPLDEAL-187,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2026-01-09,,,,,,,,UNMATCHED,118.0,"Ambiguous multiple candidates (best score 118, runner-up 118, margin 0)"
-SDPLDEAL-188,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2026-01-09,,,,,,,,UNMATCHED,118.0,"Ambiguous multiple candidates (best score 118, runner-up 118, margin 0)"
+SDPLDEAL-182,Bugs Bunny,WOCOMPANY_028,COMPANY028,Railways,OWNER_003,2026-01-12,,,,,,,,UNMATCHED,55.0,"Ambiguous multiple candidates (best score 55, runner-up 55, margin 0)"
+SDPLDEAL-185,Bulbasaur,WOCOMPANY_050,COMPANY050,Others,OWNER_004,2026-01-09,,,,,,,,UNMATCHED,30.0,Below confidence threshold (best score 30): Exact Deal Name; Conflicting Sector; Status: Won
+SDPLDEAL-186,Timon,WOCOMPANY_046,COMPANY046,Renewables,OWNER_001,2026-01-06,285.0,Timon,COMPANY038,Renewables,OWNER_001,Won,,MATCHED_HIGH,110.0,"High confidence composite match (110 pts, margin 25): Exact Deal Name; Matching Sector; Matching Owner; Status: Won"
+SDPLDEAL-187,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2026-01-09,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
+SDPLDEAL-188,Ben Tennyson,WOCOMPANY_033,COMPANY033,Renewables,OWNER_003,2026-01-09,,,,,,,,UNMATCHED,110.0,"Ambiguous multiple candidates (best score 110, runner-up 110, margin 0)"
 SDPLDEAL-189,,WOCOMPANY_045,COMPANY045,Railways,OWNER_003,2026-01-09,,,,,,,,UNMATCHED,0.0,Work Order missing deal name

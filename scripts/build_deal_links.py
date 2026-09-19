@@ -37,10 +37,10 @@ def load_and_preprocess_boards(
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """Loads and preprocesses both source boards."""
     # Work Orders: Excel Row 1 is empty, Row 2 is headers -> header=1
-    wo_df = pd.read_excel(wo_path, header=1)
+    wo_df = pd.read_excel(wo_path, header=1, keep_default_na=False)
     
     # Deals: Excel Row 1 is headers. Filter out duplicate header rows (e.g. row 50, 179)
-    deals_df = pd.read_excel(deals_path)
+    deals_df = pd.read_excel(deals_path, keep_default_na=False)
     deals_df = deals_df[deals_df["Deal Status"] != "Deal Status"].copy()
     deals_df = deals_df.reset_index(drop=True)
     deals_df["deal_row_id"] = deals_df.index + 1  # 1-indexed logical record ID
@@ -49,15 +49,22 @@ def load_and_preprocess_boards(
 
 
 def score_candidate(wo_row: pd.Series, deal_row: pd.Series) -> Tuple[float, List[str]]:
-    """Calculates match score and rationale between a Work Order and a Deal candidate."""
+    """Calculates match score and rationale between a Work Order and a Deal candidate.
+    
+    Uses ONLY:
+    - Deal Name
+    - Sector alignment
+    - Owner / BD-KAM personnel
+    - Deal Status / Stage
+    - Date proximity
+    
+    Client code is strictly excluded from score calculation.
+    """
     score = 0.0
     reasons: List[str] = []
 
     w_name = str(wo_row["Deal name masked"]).strip().lower() if pd.notna(wo_row["Deal name masked"]) else ""
     d_name = str(deal_row["Deal Name"]).strip().lower() if pd.notna(deal_row["Deal Name"]) else ""
-
-    w_client = normalize_client_code(wo_row.get("Customer Name Code"))
-    d_client = str(deal_row["Client Code"]).strip() if pd.notna(deal_row["Client Code"]) else ""
 
     w_sector = str(wo_row["Sector"]).strip().lower() if pd.notna(wo_row["Sector"]) else ""
     d_sector = str(deal_row["Sector/service"]).strip().lower() if pd.notna(deal_row["Sector/service"]) else ""
@@ -68,19 +75,14 @@ def score_candidate(wo_row: pd.Series, deal_row: pd.Series) -> Tuple[float, List
     d_status = str(deal_row["Deal Status"]).strip() if pd.notna(deal_row["Deal Status"]) else ""
     d_stage = str(deal_row["Deal Stage"]).strip() if pd.notna(deal_row["Deal Stage"]) else ""
 
-    # 1. Deal Name
+    # 1. Deal Name (Prerequisite)
     if w_name and d_name and w_name == d_name:
         score += 35.0
         reasons.append("Exact Deal Name")
     elif not w_name:
         return 0.0, ["Missing WO Deal Name"]
 
-    # 2. Client Code
-    if w_client and d_client and w_client == d_client:
-        score += 40.0
-        reasons.append("Exact Client Code")
-
-    # 3. Sector
+    # 2. Sector
     if w_sector and d_sector:
         if w_sector == d_sector:
             score += 25.0
@@ -92,26 +94,26 @@ def score_candidate(wo_row: pd.Series, deal_row: pd.Series) -> Tuple[float, List
             score -= 30.0
             reasons.append("Conflicting Sector")
 
-    # 4. Personnel / Owner
+    # 3. Personnel / Owner
     if w_owner and d_owner and w_owner == d_owner:
-        score += 20.0
+        score += 25.0
         reasons.append("Matching Owner")
 
-    # 5. Status & Stage
+    # 4. Status & Stage
     if d_status == "Won":
-        score += 20.0
+        score += 25.0
         reasons.append("Status: Won")
     elif any(term in d_stage.lower() for term in ["work order received", "project won", "project completed"]):
-        score += 15.0
+        score += 18.0
         reasons.append(f"Won Stage ({d_stage})")
     elif d_status == "Open":
         score += 5.0
         reasons.append("Status: Open")
     elif d_status == "Dead":
-        score -= 35.0
+        score -= 40.0
         reasons.append("Dead Deal Status")
 
-    # 6. Date Proximity (PO date vs close/created date)
+    # 5. Date Proximity (PO date vs close/created date)
     w_po_date = pd.to_datetime(wo_row["Date of PO/LOI"]) if pd.notna(wo_row["Date of PO/LOI"]) else None
     d_close = pd.to_datetime(deal_row["Close Date (A)"]) if pd.notna(deal_row["Close Date (A)"]) else None
     d_created = pd.to_datetime(deal_row["Created Date"]) if pd.notna(deal_row["Created Date"]) else None
@@ -150,6 +152,8 @@ def match_work_order_to_deals(
     w_owner = str(wo_row["BD/KAM Personnel code"]).strip() if pd.notna(wo_row["BD/KAM Personnel code"]) else ""
     w_po_date = str(wo_row["Date of PO/LOI"])[:10] if pd.notna(wo_row["Date of PO/LOI"]) else ""
 
+    # Note: wo_customer_code, wo_normalized_client, matched_client_code are preserved as
+    # informational metadata only and have ZERO influence on matching decisions.
     base_record: Dict[str, Any] = {
         "wo_serial": w_serial,
         "wo_deal_name": w_name,
@@ -170,7 +174,7 @@ def match_work_order_to_deals(
         "match_notes": "",
     }
 
-    if not w_name or w_name.lower() in ["nan", "none", ""]:
+    if not w_name or w_name.lower() in ["nan", "none", "", "null", "unnamed", "unnamed item"]:
         base_record["match_notes"] = "Work Order missing deal name"
         return base_record
 
@@ -189,21 +193,14 @@ def match_work_order_to_deals(
     runner_up_score = scored_cands[1][0] if len(scored_cands) > 1 else -999.0
     margin = best_score - runner_up_score
 
-    # Check for Exact Client Code Match
-    d_client = str(best_deal["Client Code"]).strip() if pd.notna(best_deal["Client Code"]) else ""
-    has_exact_client = bool(w_client and d_client and w_client == d_client)
-
-    # Determine confidence tier
+    # Determine confidence tier using composite score and margin (ZERO client code influence)
     tier = "UNMATCHED"
     note = ""
 
-    if has_exact_client and best_score >= 70.0:
-        tier = "MATCHED_HIGH"
-        note = f"Exact Deal Name & Client Code match ({best_score:.0f} pts): {'; '.join(best_reasons)}"
-    elif best_score >= 85.0 and margin >= 20.0:
+    if best_score >= 80.0 and (len(candidates) == 1 or margin >= 15.0):
         tier = "MATCHED_HIGH"
         note = f"High confidence composite match ({best_score:.0f} pts, margin {margin:.0f}): {'; '.join(best_reasons)}"
-    elif best_score >= 60.0 and (len(candidates) == 1 or margin >= 15.0):
+    elif best_score >= 55.0 and (len(candidates) == 1 or margin >= 12.0):
         tier = "MATCHED_FUZZY"
         note = f"Fuzzy composite match ({best_score:.0f} pts, margin {margin:.0f}): {'; '.join(best_reasons)}"
     elif best_score >= 50.0 and len(candidates) == 1 and best_deal["Deal Status"] == "Won":

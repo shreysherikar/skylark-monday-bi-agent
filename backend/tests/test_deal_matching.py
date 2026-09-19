@@ -7,10 +7,11 @@ verifying that records land in the expected confidence tiers:
 - UNMATCHED
 """
 
-from pathlib import Path
-import pytest
-import pandas as pd
 import sys
+from pathlib import Path
+
+import pandas as pd
+import pytest
 
 # Add repo root to sys.path to import scripts.build_deal_links
 repo_root = Path(__file__).resolve().parent.parent.parent
@@ -20,7 +21,6 @@ from scripts.build_deal_links import (
     load_and_preprocess_boards,
     match_work_order_to_deals,
     normalize_client_code,
-    score_candidate,
 )
 
 
@@ -32,58 +32,58 @@ def loaded_boards() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def test_normalize_client_code() -> None:
-    """Verifies that WO customer code prefixes are stripped cleanly."""
+    """Verifies that WO customer code prefixes are stripped cleanly for informational metadata."""
     assert normalize_client_code("WOCOMPANY_002") == "COMPANY002"
     assert normalize_client_code("WOCOMPANY_038") == "COMPANY038"
     assert normalize_client_code("COMPANY100") == "COMPANY100"
     assert normalize_client_code(None) is None
 
 
-def test_matched_high_exact_identity(loaded_boards: tuple[pd.DataFrame, pd.DataFrame]) -> None:
-    """Verifies MATCHED_HIGH for SDPLDEAL-101 (Appa) with exact client code match."""
-    wo_df, deals_df = loaded_boards
-    appa_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-101"].iloc[0]
-    result = match_work_order_to_deals(appa_row, deals_df)
-
-    assert result["confidence_tier"] == "MATCHED_HIGH"
-    assert result["wo_deal_name"] == "Appa"
-    assert result["matched_client_code"] == "COMPANY038"
-    assert result["matched_deal_name"] == "Appa"
-    assert "Exact Deal Name & Client Code match" in result["match_notes"]
-
-
 def test_matched_high_composite(loaded_boards: tuple[pd.DataFrame, pd.DataFrame]) -> None:
-    """Verifies MATCHED_HIGH for records with strong composite alignment and clear margin."""
+    """Verifies MATCHED_HIGH for records with strong multi-feature composite alignment and clear margin."""
     wo_df, deals_df = loaded_boards
     
-    # SDPLDEAL-099 (Goku)
+    # SDPLDEAL-099 (Goku) - Exact name, matching sector (Railways), matching owner, status Open
     goku_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-099"].iloc[0]
     res_goku = match_work_order_to_deals(goku_row, deals_df)
     assert res_goku["confidence_tier"] == "MATCHED_HIGH"
     assert res_goku["matched_deal_name"] == "Goku"
 
-    # SDPLDEAL-109 (Rafiki)
+    # SDPLDEAL-109 (Rafiki) - Exact name, matching sector (Renewables), status Won
     rafiki_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-109"].iloc[0]
     res_rafiki = match_work_order_to_deals(rafiki_row, deals_df)
     assert res_rafiki["confidence_tier"] == "MATCHED_HIGH"
     assert res_rafiki["matched_deal_name"] == "Rafiki"
 
+    # SDPLDEAL-149 (Sakura) - Exact name, matching sector (Renewables), matching owner (OWNER_003), close date (19d)
+    sakura_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-149"].iloc[0]
+    res_sakura = match_work_order_to_deals(sakura_row, deals_df)
+    assert res_sakura["confidence_tier"] == "MATCHED_HIGH"
+    assert res_sakura["matched_deal_name"] == "Sakura"
+    assert res_sakura["matched_deal_row_id"] == 28
 
-def test_matched_fuzzy_single_candidate(loaded_boards: tuple[pd.DataFrame, pd.DataFrame]) -> None:
-    """Verifies MATCHED_FUZZY for records with single candidates or related sectors."""
+    # SDPLDEAL-050 (Timon) - Exact name, matching owner (OWNER_003), status Won
+    timon_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-050"].iloc[0]
+    res_timon = match_work_order_to_deals(timon_row, deals_df)
+    assert res_timon["confidence_tier"] == "MATCHED_HIGH"
+    assert res_timon["matched_deal_name"] == "Timon"
+
+
+def test_matched_fuzzy_records(loaded_boards: tuple[pd.DataFrame, pd.DataFrame]) -> None:
+    """Verifies MATCHED_FUZZY for records with moderate composite scores or related sectors."""
     wo_df, deals_df = loaded_boards
 
-    # SDPLDEAL-060 (Powerpuff Girls) - single candidate in sector with Won status
-    ppg_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-060"].iloc[0]
-    result = match_work_order_to_deals(ppg_row, deals_df)
-    assert result["confidence_tier"] == "MATCHED_FUZZY"
-    assert result["matched_deal_name"] == "Powerpuff Girls"
+    # SDPLDEAL-101 (Appa) - Related sector (Others), status Won
+    appa_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-101"].iloc[0]
+    res_appa = match_work_order_to_deals(appa_row, deals_df)
+    assert res_appa["confidence_tier"] == "MATCHED_FUZZY"
+    assert res_appa["matched_deal_name"] == "Appa"
 
-    # SDPLDEAL-085 (Luffy) - single candidate with related sector (Tender)
-    luffy_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-085"].iloc[0]
-    res_luffy = match_work_order_to_deals(luffy_row, deals_df)
-    assert res_luffy["confidence_tier"] == "MATCHED_FUZZY"
-    assert res_luffy["matched_deal_name"] == "Luffy"
+    # SDPLDEAL-004 (SpongeBob) - Fuzzy composite match
+    sb_row = wo_df[wo_df["Serial #"] == "SDPLDEAL-004"].iloc[0]
+    res_sb = match_work_order_to_deals(sb_row, deals_df)
+    assert res_sb["confidence_tier"] == "MATCHED_FUZZY"
+    assert res_sb["matched_deal_name"] == "SpongeBob"
 
 
 def test_unmatched_missing_in_deals_board(loaded_boards: tuple[pd.DataFrame, pd.DataFrame]) -> None:
@@ -121,3 +121,17 @@ def test_unmatched_ambiguous_duplicates(loaded_boards: tuple[pd.DataFrame, pd.Da
     assert result["confidence_tier"] == "UNMATCHED"
     assert "Ambiguous multiple candidates" in result["match_notes"]
     assert result["matched_deal_row_id"] is None
+
+
+def test_overall_matching_counts(loaded_boards: tuple[pd.DataFrame, pd.DataFrame]) -> None:
+    """Verifies that running matching across all 176 Work Orders yields exactly 176 results with no client code bias."""
+    wo_df, deals_df = loaded_boards
+    results = [match_work_order_to_deals(row, deals_df) for _, row in wo_df.iterrows()]
+    res_df = pd.DataFrame(results)
+
+    assert len(res_df) == 176
+    counts = res_df["confidence_tier"].value_counts().to_dict()
+    assert counts.get("MATCHED_HIGH") == 16
+    assert counts.get("MATCHED_FUZZY") == 8
+    assert counts.get("UNMATCHED") == 152
+    assert sum(counts.values()) == 176

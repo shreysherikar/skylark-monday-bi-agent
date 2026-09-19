@@ -3,6 +3,7 @@ name: Deploy
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -11,7 +12,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Check AWS credentials configured
+        id: check_creds
+        env:
+          AWS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        run: |
+          if [ -z "$AWS_KEY" ]; then
+            echo "has_creds=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::AWS_ACCESS_KEY_ID secret is not configured in GitHub repository secrets. Skipping automated deployment."
+          else
+            echo "has_creds=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Configure AWS credentials
+        if: steps.check_creds.outputs.has_creds == 'true'
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -19,10 +33,12 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION || 'us-east-1' }}
 
       - name: Log in to Amazon ECR
+        if: steps.check_creds.outputs.has_creds == 'true'
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build, tag, and push Docker image to ECR
+        if: steps.check_creds.outputs.has_creds == 'true'
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: skylark-bi-backend
@@ -32,6 +48,7 @@ jobs:
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       - name: Trigger App Runner deployment
+        if: steps.check_creds.outputs.has_creds == 'true'
         env:
           SERVICE_ARN: ${{ secrets.APP_RUNNER_SERVICE_ARN }}
         run: |
@@ -40,3 +57,4 @@ jobs:
           else
             echo "APP_RUNNER_SERVICE_ARN not set; App Runner auto-deploy on ECR push handles update."
           fi
+

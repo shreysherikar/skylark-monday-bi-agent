@@ -34,5 +34,35 @@ jobs:
         run: mypy app/data app/agent
 
       - name: Run unit tests with coverage
+        env:
+          MONDAY_API_TOKEN: ${{ secrets.MONDAY_API_TOKEN }}
+          MONDAY_WORK_ORDERS_BOARD_ID: ${{ secrets.MONDAY_WORK_ORDERS_BOARD_ID || '5031416769' }}
+          MONDAY_DEALS_BOARD_ID: ${{ secrets.MONDAY_DEALS_BOARD_ID || '5031416803' }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           pytest --cov=app/data --cov-report=term --cov-report=xml --cov-fail-under=75 tests/
+
+  frontend-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck and lint
+        run: npm run lint
+
+      - name: Build production bundle
+        run: npm run build

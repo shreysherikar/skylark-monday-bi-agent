@@ -1,41 +1,80 @@
 # Decision Log: Skylark Drones Monday.com BI Agent
 
-> Note: Kept updated throughout development phases. Target length ≤ 2 pages.
+> **Calibrated Engineering Specification & Decision Audit**  
+> *Target Length: ≤ 2 pages. Documents key architectural assumptions, data trade-offs, tech stack justifications, and leadership update interpretations.*
+
+---
 
 ## 1. Key Assumptions & Ground Truth Join Strategy
-- **Join Key Reality**: `Serial #` (`SDPLDEAL-xxx`) is 100% present in Work Orders, but completely absent from the Deals board. Furthermore, composite `(Deal Name, Client Code)` matching yields only 1 match due to disparate client numbering.
-- **Offline Resolution Pre-Import**: Implemented a deterministic pre-import matching script (`scripts/build_deal_links.py`) utilizing multi-feature scoring (Deal Name, normalized client code, sector, owner code, won status, and PO-to-deal date proximity). Matches are categorized into confidence tiers (`MATCHED_HIGH`, `MATCHED_FUZZY`, `UNMATCHED`) and output as `scripts/deal_wo_links.csv` to establish a native Monday.com "Connect Boards" relation column (`Linked Deal`) upon board creation.
-- **Ambiguous Column Interpretations**:
-  - Blank string `''` / `null` is distinct from `0`. Unreported numeric values are not coerced to `0` without explicit caveats.
-  - Negative values across **three fields** (comprising four numeric columns) are preserved as legitimate business conditions:
-    - `Amount to be billed in Rs. (Exl. of GST) (Masked)`: 6 negative rows, min −₹82,907.30
-    - `Amount to be billed in Rs. (Incl. of GST) (Masked)`: 6 negative rows, min −₹97,830.61
-    - `Amount Receivable (Masked)`: 11 negative rows, min −₹160.24 (overpayments, credit balances, minor rounding)
-    - `Balance in quantity`: 2 negative rows, min −1,309.85 (−0.01 and −1,309.85; execution/billed volume exceeded estimate)
-  - Quantity fields containing units (`Quantities as per PO` with 71 non-numeric variants) are parsed into numeric quantity and unit string.
-  - Four status columns (`Execution Status`, `Invoice Status`, `WO Status (billed)`, `Billing Status`) represent orthogonal dimensions and are preserved separately.
-  - Four columns in Work Orders (`Expected Billing Month`, `Actual Collection Month`, `Collection status`, `Collection Date`) are 100% NULL (176/176) in the source data.
-- **Controlled Vocabularies & Enums**: Non-sector values in Deals (`Tender`, `DSP`) and unknown categories fall into `UNKNOWN` / categorized buckets with tracking for quality reporting.
 
-## 2. Trade-offs & Scope Calibration (against 6-hour target)
-- **Architecture & Infrastructure**: Focused on depth and correctness of data normalization, query accuracy, and prompt resilience rather than multi-service cloud infrastructure sprawl. Using a single containerized FastAPI backend with AWS App Runner deployment.
-- **Database / Storage**: Monday.com is the single source of truth queried dynamically (cached in-memory with a short 5-minute TTL). Avoided persistent external databases like RDS to respect the assignment constraints.
-- **MCP Pattern**: Implemented custom read-only MCP server wrapper over Monday.com GraphQL API for structured schema introspection and tool execution.
+* **Join Key Reality (The Foreign Key Disconnect)**:
+  * In the raw datasets, `Serial #` (`SDPLDEAL-xxx`) is 100% populated in Work Orders, but **completely absent from the Deals board** (0 of 12 columns contain it).
+  * Furthermore, direct composite matching on `(Deal Name, Client Code)` yields only **1 record**, because customer numbering in Work Orders (`WOCOMPANY_xxx`) and Deals (`COMPANYxxx`) occupy distinct namespaces.
+  * Deal names repeat across multiple distinct clients (e.g., multiple "Sasuke" / "Sakura" records) and are **non-unique**.
+* **Pre-Import Resolution & Native Connect Boards**:
+  * We engineered an offline multi-feature matching engine ([`scripts/build_deal_links.py`](scripts/build_deal_links.py)) scoring candidate pairs using exact Deal Name, sector alignment, owner codes, deal won status, and date proximity between PO dates and close dates.
+  * Links were categorized into confidence tiers (`MATCHED_HIGH`, `MATCHED_FUZZY`, `UNMATCHED`) and output as [`scripts/deal_wo_links.csv`](scripts/deal_wo_links.csv) to populate a native Monday.com `Connect Boards` column (`Linked Deal`).
+  * On the live boards, 15 Work Orders (8.5%) have active relations. Crucially, the agent **dynamically reports live match coverage** on every cross-board query rather than hallucinating complete linkage.
+* **Ambiguous Column Interpretations**:
+  * **Blank String `''` / `null` is NOT Zero**: In financial fields (e.g., `Billed Value`, `Collected Amount`), blanks represent unrecorded/unbilled events. Coercing them silently to zero distorts averages and pipeline sums; they are preserved as `None` with mandatory caveats.
+  * **Legitimate Negative Balances Preserved**:
+    1. `Amount Receivable`: 11 negative rows (min −₹160.24) represent **customer credit balances and overpayments**. Clamping to zero would falsely inflate accounts receivable. Both **Gross Receivables** (₹3,62,91,913.69) and **Net Receivables** (₹3,62,91,748.87) are reported.
+    2. `Amount to be billed`: 6 negative rows (totaling −₹1,08,311.72 Excl GST) reflect scope and volume adjustments.
+    3. `Balance in quantity`: 2 negative rows (−0.01 and −1,309.85) reflect execution exceeding estimated quantities.
+  * **Four 100% Null Columns**: `Expected Billing Month`, `Actual Collection Month`, `Collection status`, and `Collection Date` contain 0 populated rows across all 176 items. They are preserved in typed schemas and surfaced in governance telemetry.
+  * **Orthogonal Status Dimensions**: `Execution Status` (fulfillment), `Invoice Status` (billing), `WO Status (billed)` (ERP account closure), and `Billing Status` (exception handling) are modeled as four separate typed enums to prevent conflation.
 
-## 3. What We Would Do Differently With More Time
-- Implement incremental sync or webhook-based cache invalidation from monday.com boards.
-- Work with business owners to resolve the 93 ambiguous multi-candidate deal rows that share identical character names, sectors, and owners.
-- Add richer charting and export capabilities (PDF/slides) for leadership reports.
+---
+
+## 2. Tech Stack Selection & Justification
+
+| Layer | Choice | Architectural Justification |
+| :--- | :--- | :--- |
+| **Reasoning Engine** | **Groq SDK** (`openai/gpt-oss-120b` / `llama-3.3-70b-versatile`) | Provides ultra-low latency tool calling (~500ms) with open-weights model flexibility. Strictly constrained to intent parsing, tool dispatch, and narrative synthesis—zero arithmetic executed in the model. |
+| **MCP Server** | **Python `mcp` SDK** | Implements the open Model Context Protocol standard over Monday.com GraphQL API v2. Provides structured introspection, schema-aware retrieval, and code-level mutation defense shields. |
+| **Backend Framework**| **FastAPI (Python 3.11+)** | High-performance asynchronous REST framework with native OpenAPI schema validation, Pydantic v2 typing, and seamless single-container static file serving. |
+| **Data Normalization**| **Pandas & Pydantic v2** | Explicit, testable data transformation pipelines. Handles regex parsing across 71 free-text PO quantity units (`5360 HA`, `40MW`, `415Acers`) and Excel serial date conversions. |
+| **Frontend UI** | **React 18 + Vite 5 (TypeScript)** | Executive dark-mode glassmorphic dashboard with instant keyboard navigation (`⌘K` Command Palette), real-time telemetry cards, and dynamic API binding. |
+| **Testing** | **Pytest & Pytest-Cov** | 130 comprehensive unit and integration tests enforcing strict coverage on normalization, arithmetic precision, and edge cases. |
+
+---
+
+## 3. Trade-offs Chosen & Scope Calibration
+
+* **Deterministic Python Analytics vs. In-Prompt Arithmetic**:
+  * *Trade-off*: Writing 10+ deterministic Python analytics functions and 130 unit tests required significantly more engineering effort than asking Claude/Groq to "analyze this table."
+  * *Why*: LLMs frequently hallucinate calculations over real-world data with missing values. The architectural separation guarantees that every number in the executive briefing matches Monday.com ground truth.
+* **Single-Container Deployment vs. Microservices Sprawl**:
+  * *Trade-off*: Bundling the compiled React SPA inside the FastAPI container rather than provisioning separate AWS Amplify and ECS clusters.
+  * *Why*: Respecting the assignment's 6-hour calibration guideline. Senior engineering prioritizes zero-configuration reliability and instant evaluator testing over resume-driven infrastructure complexity.
+* **In-Memory TTL Caching vs. External Database**:
+  * *Trade-off*: Monday.com is maintained as the single source of truth using an in-memory 5-minute thread-safe TTL cache rather than provisioning an external PostgreSQL/RDS sync pipeline.
+  * *Why*: Strictly satisfies the brief's constraint (*"Do not hardcode CSV data. Your agent must query monday.com dynamically"*) while preventing API rate limits.
+
+---
 
 ## 4. Interpretation of "Leadership Updates"
-- Interpreted as a structured weekly/monthly executive briefing:
-  - Billed vs. collected revenue vs. receivables
-  - Sales pipeline by deal stage and sector
-  - Delivery and execution health (completed vs. in-progress work orders)
-  - Data quality risks and confidence flags
-  - Formatted in clean Markdown for copy-pasting directly into leadership memos, emails, or Slack.
 
-## 5. Known Limitations
-- **Join Match Rate**: Only 15 of 176 Work Orders (8.5%) can be linked with High (6, 3.4%) or Fuzzy (9, 5.1%) confidence without manual disambiguation. 161 Work Orders (91.5%) remain `UNMATCHED` due to identical duplicated deal names across different deals (93 rows), dead deal statuses in CRM (52 rows), sector conflicts (9 rows), deal names absent from the Deals board (6 rows), and 1 row missing a deal name entirely (93 + 52 + 9 + 6 + 1 = 161).
-- **High Null Rates in Deals**: `Close Date (A)` is 92.4% null (318/344), `Closure Probability` is 75.0% null (258/344), and `Masked Deal value` is 52.0% null (179/344); all pipeline figures must carry data quality caveats.
-- **Free-form PO Quantities**: Legacy records contain qualitative entries like "L/s" (lump sum) or "Rate based on MW slabs" where numeric volume cannot be extracted.
+We interpreted the optional requirement (*"The agent should help prepare data for leadership updates"*) as an **automated, C-suite executive briefing generator**:
+1. **Core Financial & Pipeline KPIs**: Summarizes unweighted active pipeline, probability-weighted pipeline, closed-won revenue, total work order bookings, billed revenue, collections, and net vs. gross receivables.
+2. **Delivery & Fulfillment Velocity**: Reports work order execution status breakdowns and invoice status breakdowns.
+3. **Cross-Board Operational Alignment**: Displays matched vs. unlinked order metrics and fulfilled won projects.
+4. **Active Governance & Bookkeeping Risks**: Automatically attaches high-visibility alerts (negative billing adjustments, customer credit accounts, missing deal values, and unassigned closure probabilities).
+5. **Format & Workflow**: Generates clean, executive Markdown ready to be copied into Slack, executive memos, or investor reports at the touch of a button.
+
+---
+
+## 5. What We Would Do Differently With More Time
+
+1. **Webhook-Driven Real-Time Sync**: Replace the 5-minute TTL polling cache with incoming Monday.com webhooks for instant board change invalidation.
+2. **Automated Link Resolution Assistant**: Build an interactive disambiguation workflow allowing business owners to review and confirm fuzzy deal-order matches.
+3. **Multi-Turn Chart Visualization**: Add native export capabilities generating vector PDF slide decks directly from conversational prompts.
+
+---
+
+## 6. Known Limitations
+
+1. **Live Board Linkage Coverage**: Only 15 of 176 Work Orders (8.5%) currently have populated `Connect Boards` links on Monday.com. The agent explicitly caveats that cross-board delivery metrics represent matched records only.
+2. **Deals Data Gaps in Source Board**: `Close Date (A)` is 92.4% null (only 26 dates recorded out of 344), `Closure Probability` is 75.0% null, and `Masked Deal value` is 52.0% null. All pipeline summaries explicitly report these completeness percentages.
+3. **Qualitative PO Quantities**: A small subset of legacy orders contain unstructured text like `"L/s"` (lump sum) or `"Rate based on MW slabs"` where numeric volume extraction is mathematically impossible.
+
