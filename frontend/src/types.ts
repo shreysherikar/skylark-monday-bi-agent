@@ -75,6 +75,107 @@ export interface OverviewDataQuality {
   work_orders_fully_null_columns: string[];
 }
 
+export interface LinkedDealItem {
+  wo_serial: string;
+  wo_deal_name: string | null;
+  wo_customer_code?: string | null;
+  wo_sector?: string | null;
+  wo_owner?: string | null;
+  wo_execution_status: string | null;
+  wo_invoice_status?: string | null;
+  wo_amount_excl_gst: number | null;
+  wo_billed_excl_gst: number | null;
+  wo_receivable?: number | null;
+  deal_item_id: string;
+  deal_name: string | null;
+  deal_status: string | null;
+  deal_stage: string | null;
+  deal_sector?: string | null;
+  deal_value: number | null;
+  deal_owner?: string | null;
+  is_commercial_risk?: boolean;
+  risk_severity?: string;
+  risk_reason?: string;
+  variance_deal_vs_wo?: number | null;
+  variance_percentage?: number | null;
+  variance_category?: string;
+}
+
+export interface CommercialRiskInfo {
+  unclosed_deal_risk_count: number;
+  high_risk_orders_count: number;
+  unclosed_deal_risk_value_excl_gst: number;
+  unclosed_deal_risk_billed_excl_gst: number;
+  risk_orders: Array<{
+    wo_serial: string;
+    deal_name: string | null;
+    deal_status: string | null;
+    deal_stage: string | null;
+    wo_execution_status: string | null;
+    wo_amount_excl_gst: number;
+    wo_billed_excl_gst: number;
+    risk_severity: string;
+    risk_reason: string;
+  }>;
+}
+
+export interface ValueVarianceInfo {
+  matched_deals_with_value_count: number;
+  contract_leakage_count: number;
+  contract_leakage_value: number;
+  scope_expansion_count: number;
+  scope_expansion_value: number;
+  aligned_count: number;
+  unrecorded_deal_value_count: number;
+}
+
+export interface WonDealsBacklogInfo {
+  total_won_deals: number;
+  won_deals_with_wo_count: number;
+  won_deals_without_wo_count: number;
+  won_deals_without_wo_value: number;
+  sample_won_deals_without_wo: Array<{
+    deal_item_id: string;
+    deal_name: string | null;
+    client_code: string | null;
+    sector: string | null;
+    deal_value: number | null;
+    close_date: string | null;
+  }>;
+}
+
+export interface DeliveryMetrics {
+  total_work_orders: number;
+  total_deals: number;
+  matched_orders_count: number;
+  unmatched_orders_count: number;
+  link_coverage_percentage: number;
+  completed_and_won_count: number;
+  completed_with_open_deal_count: number;
+  ongoing_or_pending_count: number;
+  total_matched_order_value_excl_gst: number;
+  total_matched_billed_value_excl_gst: number;
+  total_matched_deal_value_excl_gst?: number;
+  commercial_risk?: CommercialRiskInfo;
+  value_variance?: ValueVarianceInfo;
+  won_deals_backlog?: WonDealsBacklogInfo;
+  unlinked_exposure?: {
+    unlinked_orders_count: number;
+    unlinked_orders_value_excl_gst: number;
+    unlinked_orders_billed_excl_gst: number;
+  };
+  alignment?: {
+    owner_match_rate_pct: number;
+    owner_matches: number;
+    owner_comparable_count: number;
+    sector_match_rate_pct: number;
+    sector_matches: number;
+    sector_comparable_count: number;
+  };
+  linked_items?: LinkedDealItem[];
+  caveats: string[];
+}
+
 export interface OverviewMetrics {
   pipeline: {
     total_deals: number;
@@ -110,19 +211,7 @@ export interface OverviewMetrics {
     sector_breakdown: Record<string, { orders_count: number; total_order_val_excl: number; billed_val_excl: number; collected_val_incl: number; net_receivable: number }>;
     caveats: string[];
   };
-  delivery: {
-    total_work_orders: number;
-    total_deals: number;
-    matched_orders_count: number;
-    unmatched_orders_count: number;
-    link_coverage_percentage: number;
-    completed_and_won_count: number;
-    completed_with_open_deal_count: number;
-    ongoing_or_pending_count: number;
-    total_matched_order_value_excl_gst: number;
-    total_matched_billed_value_excl_gst: number;
-    caveats: string[];
-  };
+  delivery: DeliveryMetrics;
   data_quality?: OverviewDataQuality;
 }
 

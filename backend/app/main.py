@@ -228,6 +228,39 @@ async def get_quality_metrics() -> dict[str, Any]:
         )
 
 
+@app.get("/api/cross-board")
+async def get_cross_board_intelligence(
+    sector: str | None = None,
+    view: str | None = None,
+) -> dict[str, Any]:
+    """Provides detailed cross-board intelligence between Deals (CRM) and Work Orders (Fulfillment)."""
+    try:
+        from app.agent.tools import _load_normalized_deals, _load_normalized_work_orders
+        from app.data.analytics import compute_cross_board_delivery
+
+        deals_df = _load_normalized_deals()
+        wo_df, wo_items = _load_normalized_work_orders()
+        return compute_cross_board_delivery(
+            norm_wo_df=wo_df,
+            norm_deals_df=deals_df,
+            wo_items=wo_items,
+            sector=sector,
+            view=view,
+        )
+    except MondayAPIError as monday_ex:
+        logger.error("Monday.com API failure while calculating cross-board metrics: %s", monday_ex)
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Monday.com is currently unavailable: {monday_ex}",
+        )
+    except Exception as ex:
+        logger.exception("Error calculating cross-board metrics")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error calculating cross-board metrics: {ex}",
+        )
+
+
 # Mount compiled frontend static assets for SPA production serving
 if FRONTEND_DIST is not None and (FRONTEND_DIST / "assets").is_dir():
     app.mount("/assets", StaticFiles(directory=str(FRONTEND_DIST / "assets")), name="assets")

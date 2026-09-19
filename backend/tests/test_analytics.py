@@ -284,6 +284,27 @@ def test_cross_board_join_and_delivery(normalized_data) -> None:
 
     # Dynamic caveats must reflect the exact dynamic counts
     assert any("2 of 176 work orders" in c for c in delivery["caveats"])
+    assert "commercial_risk" in delivery
+    assert "value_variance" in delivery
+    assert "won_deals_backlog" in delivery
+    assert "unlinked_exposure" in delivery
+
+
+def test_cross_board_commercial_risk_and_variance(normalized_data) -> None:
+    """Verifies commercial risk, value variance, and won-deal backlog calculations."""
+    norm_wo, norm_deals = normalized_data
+    res = compute_cross_board_delivery(norm_wo, norm_deals, view="unclosed_deal_risk")
+
+    assert res["total_work_orders"] == 176
+    assert res["total_deals"] == 344
+    assert res["view"] == "unclosed_deal_risk"
+    assert "commercial_risk" in res
+    assert "value_variance" in res
+    assert "won_deals_backlog" in res
+    assert res["commercial_risk"]["unclosed_deal_risk_count"] >= 0
+    assert res["won_deals_backlog"]["total_won_deals"] == 103
+    assert res["won_deals_backlog"]["won_deals_without_wo_count"] >= 0
+    assert res["unlinked_exposure"]["unlinked_orders_count"] > 0
 
 
 def test_generate_leadership_update(normalized_data) -> None:

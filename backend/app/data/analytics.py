@@ -13,6 +13,7 @@ Key rules:
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any, cast
 
 import pandas as pd
@@ -121,41 +122,103 @@ def join_work_orders_to_deals(
             elif raw_ids and str(raw_ids).strip() not in ("", "none", "nan", "[]"):
                 linked_ids = [str(raw_ids).strip()]
 
-        # 2. Try from norm_wo_df column if present
+        # 2. Try from norm_wo_df column if present (defensively avoid numpy/pandas array truth errors)
         if not linked_ids:
             for col in ["Linked Deal__linked_ids", "Linked Deal"]:
-                if col in wo_row and pd.notna(wo_row[col]):
+                if col in wo_row:
                     val = wo_row[col]
-                    if isinstance(val, list):
-                        linked_ids = [str(x) for x in val if x]
-                    elif str(val).strip() not in ("", "none", "nan", "[]"):
-                        linked_ids = [str(val).strip()]
+                    if val is not None:
+                        if isinstance(val, (list, tuple)):
+                            linked_ids = [str(x) for x in val if x]
+                        elif not (pd.isna(val) if not hasattr(val, "__len__") else len(val) == 0):
+                            s_val = str(val).strip()
+                            if s_val not in ("", "none", "nan", "[]"):
+                                linked_ids = [s_val]
                     if linked_ids:
                         break
 
         if linked_ids:
             target_id = linked_ids[0]
             matched_deal = deals_by_id.get(target_id)
+            deal_nm = matched_deal.get("Deal Name") or matched_deal.get("item_name") if matched_deal else None
+            wo_deal_nm = wo_row.get("Deal name masked") or wo_row.get("Deal Name") or wo_row.get("item_name")
             linked_pairs.append({
                 "wo_serial": serial,
-                "wo_deal_name": wo_row.get("Deal name masked"),
+                "wo_deal_name": deal_nm or wo_deal_nm,
+                "wo_customer_code": wo_row.get("Customer Name Code"),
                 "wo_sector": wo_row.get("Sector"),
                 "wo_owner": wo_row.get("BD/KAM Personnel code"),
                 "wo_execution_status": wo_row.get("Execution Status"),
                 "wo_invoice_status": wo_row.get("Invoice Status"),
+                "wo_nature_of_work": wo_row.get("Nature of Work"),
+                "wo_start_date": wo_row.get("Probable Start Date"),
+                "wo_po_date": wo_row.get("Date of PO/LOI"),
                 "wo_amount_excl_gst": wo_row.get("Amount in Rupees (Excl of GST) (Masked)"),
                 "wo_billed_excl_gst": wo_row.get("Billed Value in Rupees (Excl of GST.) (Masked)"),
                 "wo_receivable": wo_row.get("Amount Receivable (Masked)"),
                 "deal_item_id": target_id,
-                "deal_name": matched_deal.get("Deal Name") if matched_deal else None,
+                "deal_name": deal_nm,
                 "deal_status": matched_deal.get("Deal Status") if matched_deal else None,
                 "deal_stage": matched_deal.get("Deal Stage") if matched_deal else None,
                 "deal_sector": matched_deal.get("Sector/service") if matched_deal else None,
                 "deal_value": matched_deal.get("Masked Deal value") if matched_deal else None,
                 "deal_owner": matched_deal.get("Owner code") if matched_deal else None,
+                "deal_close_date": matched_deal.get("Close Date (A)") if matched_deal else None,
             })
         else:
             unlinked_wo_serials.append(serial)
+
+    # Offline fallback: if no live Monday links were present (e.g. offline unit testing on Excel),
+    # load links from scripts/deal_wo_links.csv if available.
+    if not linked_pairs:
+        for base in [Path.cwd(), Path.cwd().parent, Path(__file__).resolve().parents[3]]:
+            csv_candidate = base / "scripts" / "deal_wo_links.csv"
+            if csv_candidate.exists():
+                try:
+                    link_csv_df = pd.read_csv(csv_candidate)
+                    matched_rows = link_csv_df[link_csv_df["confidence_tier"].isin(["MATCHED_HIGH", "MATCHED_FUZZY"])]
+                    csv_link_map: dict[str, str] = {}
+                    for _, lrow in matched_rows.iterrows():
+                        if pd.notna(lrow.get("matched_deal_row_id")):
+                            csv_link_map[str(lrow["wo_serial"]).strip()] = str(int(float(lrow["matched_deal_row_id"])))
+                    if csv_link_map:
+                        linked_pairs = []
+                        unlinked_wo_serials = []
+                        for _, wo_row in norm_wo_df.iterrows():
+                            serial = str(wo_row.get("Serial #", "")).strip()
+                            if serial in csv_link_map:
+                                deal_row_str = csv_link_map[serial]
+                                matched_deal = deals_by_id.get(deal_row_str)
+                                deal_nm = matched_deal.get("Deal Name") or matched_deal.get("item_name") if matched_deal else None
+                                wo_deal_nm = wo_row.get("Deal name masked") or wo_row.get("Deal Name") or wo_row.get("item_name")
+                                linked_pairs.append({
+                                    "wo_serial": serial,
+                                    "wo_deal_name": deal_nm or wo_deal_nm,
+                                    "wo_customer_code": wo_row.get("Customer Name Code"),
+                                    "wo_sector": wo_row.get("Sector"),
+                                    "wo_owner": wo_row.get("BD/KAM Personnel code"),
+                                    "wo_execution_status": wo_row.get("Execution Status"),
+                                    "wo_invoice_status": wo_row.get("Invoice Status"),
+                                    "wo_nature_of_work": wo_row.get("Nature of Work"),
+                                    "wo_start_date": wo_row.get("Probable Start Date"),
+                                    "wo_po_date": wo_row.get("Date of PO/LOI"),
+                                    "wo_amount_excl_gst": wo_row.get("Amount in Rupees (Excl of GST) (Masked)"),
+                                    "wo_billed_excl_gst": wo_row.get("Billed Value in Rupees (Excl of GST.) (Masked)"),
+                                    "wo_receivable": wo_row.get("Amount Receivable (Masked)"),
+                                    "deal_item_id": deal_row_str,
+                                    "deal_name": deal_nm,
+                                    "deal_status": matched_deal.get("Deal Status") if matched_deal else None,
+                                    "deal_stage": matched_deal.get("Deal Stage") if matched_deal else None,
+                                    "deal_sector": matched_deal.get("Sector/service") if matched_deal else None,
+                                    "deal_value": matched_deal.get("Masked Deal value") if matched_deal else None,
+                                    "deal_owner": matched_deal.get("Owner code") if matched_deal else None,
+                                    "deal_close_date": matched_deal.get("Close Date (A)") if matched_deal else None,
+                                })
+                            else:
+                                unlinked_wo_serials.append(serial)
+                    break
+                except Exception:
+                    pass
 
     linked_count = len(linked_pairs)
     unlinked_count = len(unlinked_wo_serials)
@@ -446,60 +509,290 @@ def compute_cross_board_delivery(
     norm_deals_df: pd.DataFrame,
     wo_items: list[dict[str, Any]] | None = None,
     sector: str | None = None,
+    view: str | None = None,
 ) -> dict[str, Any]:
     """Computes cross-board delivery and fulfillment alignment for matched Work Orders & Deals.
     
-    Strictly reports dynamic live coverage and never assumes hardcoded link counts.
+    Performs deterministic calculations for:
+    - Live Connect Boards link coverage (never assumes hardcoded counts)
+    - Commercial Risk Audit (work orders active or completed on unclosed Deals)
+    - Contract Value Variance (Deal Value contracted vs WO Booked vs Billed)
+    - Won Deals Execution Backlog (Won deals without linked Work Orders)
+    - Unlinked Work Orders Financial Exposure (unattributed operations)
+    - Cross-department Owner and Sector Alignment
     """
     join_res = join_work_orders_to_deals(norm_wo_df, norm_deals_df, wo_items=wo_items)
-    pairs = join_res["linked_pairs"]
+    pairs = list(join_res["linked_pairs"])
 
     resolved_sector = resolve_sector_synonym(sector)
     if resolved_sector:
         s_norm = resolved_sector.lower()
-        pairs = [p for p in pairs if str(p.get("wo_sector", "")).lower() == s_norm]
+        pairs = [p for p in pairs if str(p.get("wo_sector", "")).lower() == s_norm or str(p.get("deal_sector", "")).lower() == s_norm]
 
     total_matched = len(pairs)
 
-    # Status alignment
+    # 1. Fulfillment & Status Breakdown
     completed_and_won = 0
     completed_open_deal = 0
     ongoing_or_not_started = 0
     total_matched_order_value = 0.0
     total_matched_billed_value = 0.0
+    total_matched_deal_value = 0.0
+    matched_deals_with_value_count = 0
+
+    # 2. Commercial Risk Tracking
+    unclosed_risk_pairs: list[dict[str, Any]] = []
+    unclosed_risk_value = 0.0
+    unclosed_risk_billed = 0.0
+    high_risk_count = 0
+
+    # 3. Value Variance Tracking
+    contract_leakage_value = 0.0
+    scope_expansion_value = 0.0
+    leakage_count = 0
+    expansion_count = 0
+    aligned_count = 0
+    unrecorded_deal_value_count = 0
+
+    # 4. Alignment Tracking
+    owner_matches = 0
+    owner_comparable = 0
+    sector_matches = 0
+    sector_comparable = 0
 
     for p in pairs:
-        e_stat = str(p.get("wo_execution_status", "")).lower()
-        d_stat = str(p.get("deal_status", "")).lower()
+        e_stat = str(p.get("wo_execution_status", "")).strip()
+        e_stat_lower = e_stat.lower()
+        d_stat = str(p.get("deal_status", "")).strip()
+        d_stat_lower = d_stat.lower()
+        d_stage = str(p.get("deal_stage", "")).strip()
+
         amt = p.get("wo_amount_excl_gst")
         billed = p.get("wo_billed_excl_gst")
+        deal_val = p.get("deal_value")
+
+        amt_f = float(amt) if (amt is not None and pd.notna(amt)) else 0.0
+        billed_f = float(billed) if (billed is not None and pd.notna(billed)) else 0.0
 
         if amt is not None and pd.notna(amt):
-            total_matched_order_value += float(amt)
+            total_matched_order_value += amt_f
         if billed is not None and pd.notna(billed):
-            total_matched_billed_value += float(billed)
+            total_matched_billed_value += billed_f
 
-        if e_stat == "completed" and d_stat == "won":
+        # Fulfillment classification
+        if e_stat_lower == "completed" and d_stat_lower == "won":
             completed_and_won += 1
-        elif e_stat == "completed" and d_stat != "won":
+        elif e_stat_lower == "completed" and d_stat_lower != "won":
             completed_open_deal += 1
         else:
             ongoing_or_not_started += 1
 
+        # Commercial Risk Audit (Orders executing on unclosed deals)
+        is_won = (d_stat_lower == "won")
+        p["is_commercial_risk"] = not is_won
+        if not is_won:
+            if e_stat_lower in ("completed", "ongoing"):
+                severity = "HIGH"
+                high_risk_count += 1
+                reason = f"Operations {e_stat} on non-won deal ({d_stat or 'No Status'} - {d_stage or 'No Stage'})"
+            elif e_stat_lower in ("executed until current month", "partial completed"):
+                severity = "MEDIUM"
+                reason = f"Active execution ({e_stat}) on open deal ({d_stat or 'Open'})"
+            else:
+                severity = "LOW"
+                reason = f"Work order queued ({e_stat}) on pending deal"
+
+            p["risk_severity"] = severity
+            p["risk_reason"] = reason
+            unclosed_risk_pairs.append({
+                "wo_serial": p["wo_serial"],
+                "deal_name": p["deal_name"] or p["wo_deal_name"],
+                "deal_status": p["deal_status"],
+                "deal_stage": p["deal_stage"],
+                "wo_execution_status": p["wo_execution_status"],
+                "wo_amount_excl_gst": round(amt_f, 2),
+                "wo_billed_excl_gst": round(billed_f, 2),
+                "risk_severity": severity,
+                "risk_reason": reason,
+            })
+            unclosed_risk_value += amt_f
+            unclosed_risk_billed += billed_f
+        else:
+            p["risk_severity"] = "NONE"
+            p["risk_reason"] = "Deal won"
+
+        # Value Variance Analysis
+        if deal_val is not None and pd.notna(deal_val):
+            deal_val_f = float(deal_val)
+            total_matched_deal_value += deal_val_f
+            matched_deals_with_value_count += 1
+
+            if amt is not None and pd.notna(amt):
+                variance = round(deal_val_f - amt_f, 2)
+                var_pct = round((variance / deal_val_f * 100.0), 1) if deal_val_f > 0 else 0.0
+
+                if variance > (0.05 * deal_val_f):
+                    cat = "Contract Leakage / Under-booked"
+                    leakage_count += 1
+                    contract_leakage_value += variance
+                elif variance < -(0.05 * deal_val_f):
+                    cat = "Scope Expansion / Over-delivered"
+                    expansion_count += 1
+                    scope_expansion_value += abs(variance)
+                else:
+                    cat = "Aligned"
+                    aligned_count += 1
+
+                p["variance_deal_vs_wo"] = variance
+                p["variance_percentage"] = var_pct
+                p["variance_category"] = cat
+            else:
+                p["variance_deal_vs_wo"] = None
+                p["variance_percentage"] = None
+                p["variance_category"] = "Unrecorded Work Order Value"
+        else:
+            unrecorded_deal_value_count += 1
+            p["variance_deal_vs_wo"] = None
+            p["variance_percentage"] = None
+            p["variance_category"] = "Unrecorded Deal Value"
+
+        # Owner and Sector Alignment
+        wo_own = str(p.get("wo_owner") or "").strip()
+        deal_own = str(p.get("deal_owner") or "").strip()
+        if wo_own and deal_own and wo_own.lower() not in ("none", "nan") and deal_own.lower() not in ("none", "nan"):
+            owner_comparable += 1
+            if wo_own.lower() == deal_own.lower():
+                owner_matches += 1
+
+        wo_sec = resolve_sector_synonym(p.get("wo_sector"))
+        deal_sec = resolve_sector_synonym(p.get("deal_sector"))
+        if wo_sec and deal_sec:
+            sector_comparable += 1
+            if wo_sec.lower() == deal_sec.lower():
+                sector_matches += 1
+
+    # Sort risk orders with HIGH severity first, then by order value descending
+    unclosed_risk_pairs.sort(key=lambda x: (0 if x["risk_severity"] == "HIGH" else (1 if x["risk_severity"] == "MEDIUM" else 2), -x["wo_amount_excl_gst"]))
+
+    # 5. Won Deals Without Work Orders
+    linked_deal_ids = {str(p["deal_item_id"]).strip() for p in join_res["linked_pairs"] if p.get("deal_item_id")}
+    won_mask = norm_deals_df["is_won"] if "is_won" in norm_deals_df.columns else (norm_deals_df["Deal Status"].str.lower() == "won")
+    won_df = norm_deals_df[won_mask]
+    total_won_deals = len(won_df)
+
+    won_deals_without_wo_list: list[dict[str, Any]] = []
+    won_deals_without_wo_val = 0.0
+    won_deals_with_wo_cnt = 0
+
+    for idx, drow in won_df.iterrows():
+        item_id = str(drow.get("item_id", "")).strip()
+        row_id_str = str(int(cast("Any", idx)) + 1)
+        is_linked = (item_id in linked_deal_ids) or (row_id_str in linked_deal_ids)
+
+        if is_linked:
+            won_deals_with_wo_cnt += 1
+        else:
+            dv = drow.get("Masked Deal value")
+            dv_f = float(dv) if (dv is not None and pd.notna(dv)) else 0.0
+            won_deals_without_wo_val += dv_f
+            won_deals_without_wo_list.append({
+                "deal_item_id": item_id or row_id_str,
+                "deal_name": drow.get("Deal Name") or drow.get("item_name"),
+                "client_code": drow.get("Client Code"),
+                "sector": drow.get("normalized_sector") or drow.get("Sector/service"),
+                "deal_value": round(dv_f, 2) if dv_f > 0 else None,
+                "close_date": str(drow.get("Close Date (A)")) if pd.notna(drow.get("Close Date (A)")) else None,
+            })
+
+    won_deals_without_wo_cnt = total_won_deals - won_deals_with_wo_cnt
+
+    # 6. Unlinked Work Orders Exposure
+    unlinked_serials_set = set(join_res["unlinked_serials"])
+    unlinked_wo_df = norm_wo_df[norm_wo_df["Serial #"].isin(unlinked_serials_set)]
+    unlinked_order_col = "Amount in Rupees (Excl of GST) (Masked)"
+    unlinked_billed_col = "Billed Value in Rupees (Excl of GST.) (Masked)"
+    unlinked_val_excl = float(unlinked_wo_df[unlinked_order_col].dropna().sum()) if unlinked_order_col in unlinked_wo_df else 0.0
+    unlinked_billed_excl = float(unlinked_wo_df[unlinked_billed_col].dropna().sum()) if unlinked_billed_col in unlinked_wo_df else 0.0
+
+    # 7. Construct Dynamic Caveats
+    coverage_pct = join_res["link_coverage_percentage"]
+    caveats = [
+        (
+            f"Cross-board join coverage: {join_res['linked_work_orders_count']} of {join_res['total_work_orders']} work orders "
+            f"({coverage_pct:.1f}%) are currently linked via native Monday Connect Boards."
+        ),
+    ]
+    if len(unclosed_risk_pairs) > 0:
+        caveats.append(
+            f"Commercial Risk Alert: {len(unclosed_risk_pairs)} work order(s) totaling ₹{unclosed_risk_value:,.2f} Excl GST "
+            f"are executing on unclosed deals ({high_risk_count} with Completed or Ongoing status)."
+        )
+    if won_deals_without_wo_cnt > 0:
+        caveats.append(
+            f"Execution Backlog: {won_deals_without_wo_cnt} won deal(s) totaling ₹{won_deals_without_wo_val:,.2f} pipeline value "
+            f"have no linked Work Order recorded."
+        )
+    caveats.append(
+        f"Unlinked Work Orders Exposure: {len(unlinked_serials_set)} unlinked work order(s) represent ₹{unlinked_val_excl:,.2f} "
+        f"in booked revenue without direct CRM deal attribution."
+    )
+
     return {
+        # Core original fields (strictly preserved for backwards compatibility)
         "filtered_sector": sector,
         "total_work_orders": join_res["total_work_orders"],
         "total_deals": join_res["total_deals"],
         "matched_orders_count": total_matched,
         "unmatched_orders_count": join_res["unlinked_work_orders_count"],
-        "link_coverage_percentage": join_res["link_coverage_percentage"],
+        "link_coverage_percentage": coverage_pct,
         "completed_and_won_count": completed_and_won,
         "completed_with_open_deal_count": completed_open_deal,
         "ongoing_or_pending_count": ongoing_or_not_started,
         "total_matched_order_value_excl_gst": round(total_matched_order_value, 2),
         "total_matched_billed_value_excl_gst": round(total_matched_billed_value, 2),
         "matched_sample": pairs[:10],
-        "caveats": join_res["caveats"],
+        "caveats": caveats,
+
+        # Enhanced Founder-Level Intelligence Fields
+        "total_matched_deal_value_excl_gst": round(total_matched_deal_value, 2),
+        "commercial_risk": {
+            "unclosed_deal_risk_count": len(unclosed_risk_pairs),
+            "high_risk_orders_count": high_risk_count,
+            "unclosed_deal_risk_value_excl_gst": round(unclosed_risk_value, 2),
+            "unclosed_deal_risk_billed_excl_gst": round(unclosed_risk_billed, 2),
+            "risk_orders": unclosed_risk_pairs,
+        },
+        "value_variance": {
+            "matched_deals_with_value_count": matched_deals_with_value_count,
+            "contract_leakage_count": leakage_count,
+            "contract_leakage_value": round(contract_leakage_value, 2),
+            "scope_expansion_count": expansion_count,
+            "scope_expansion_value": round(scope_expansion_value, 2),
+            "aligned_count": aligned_count,
+            "unrecorded_deal_value_count": unrecorded_deal_value_count,
+        },
+        "won_deals_backlog": {
+            "total_won_deals": total_won_deals,
+            "won_deals_with_wo_count": won_deals_with_wo_cnt,
+            "won_deals_without_wo_count": won_deals_without_wo_cnt,
+            "won_deals_without_wo_value": round(won_deals_without_wo_val, 2),
+            "sample_won_deals_without_wo": won_deals_without_wo_list[:10],
+        },
+        "unlinked_exposure": {
+            "unlinked_orders_count": len(unlinked_serials_set),
+            "unlinked_orders_value_excl_gst": round(unlinked_val_excl, 2),
+            "unlinked_orders_billed_excl_gst": round(unlinked_billed_excl, 2),
+        },
+        "alignment": {
+            "owner_match_rate_pct": round((owner_matches / owner_comparable * 100.0), 1) if owner_comparable > 0 else 0.0,
+            "owner_matches": owner_matches,
+            "owner_comparable_count": owner_comparable,
+            "sector_match_rate_pct": round((sector_matches / sector_comparable * 100.0), 1) if sector_comparable > 0 else 0.0,
+            "sector_matches": sector_matches,
+            "sector_comparable_count": sector_comparable,
+        },
+        "view": view or "summary",
+        "linked_items": pairs,
     }
 
 

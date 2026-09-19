@@ -83,15 +83,25 @@ AGENT_TOOLS: list[dict[str, Any]] = [
     {
         "name": "get_cross_board_delivery",
         "description": (
-            "Retrieve delivery and fulfillment alignment across linked Work Orders and Deals using live "
-            "Monday.com Connect Boards relationships. Dynamically reports live link coverage and execution status."
+            "Retrieve cross-board delivery intelligence connecting Deals (CRM) to Work Orders (Operations/Billing) "
+            "via live Monday.com Connect Boards relationships. Answers founder-level questions about: "
+            "(1) Commercial risk: work orders executing or completed on unclosed (Open/On Hold/Dead) deals; "
+            "(2) Contract value variance: Deal Value vs WO Booked Amount vs Billed Amount (leakage vs expansion); "
+            "(3) Execution backlog: Won deals with no linked Work Order; "
+            "(4) Live link coverage and unlinked order financial exposure; "
+            "(5) Cross-department Sales vs Ops owner and sector alignment."
         ),
         "input_schema": {
             "type": "object",
             "properties": {
                 "sector": {
                     "type": ["string", "null"],
-                    "description": "Optional sector filter. Omit or null when no sector filter is wanted.",
+                    "description": "Optional sector filter (e.g., 'Renewables', 'Mining', 'Powerline'). Omit or null when analyzing across all sectors.",
+                },
+                "view": {
+                    "type": ["string", "null"],
+                    "enum": ["summary", "unclosed_deal_risk", "value_variance", "won_without_wo", "alignment", None],
+                    "description": "Focus view: 'unclosed_deal_risk' (orders at risk on non-won deals), 'value_variance' (deal vs booked contract variance), 'won_without_wo' (won deals lacking work orders), 'alignment' (owner/sector handoff consistency), or 'summary' (all). Default is 'summary'.",
                 },
             },
             "required": [],
@@ -298,7 +308,11 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         wo_df, wo_items = _load_normalized_work_orders()
         deals_df = _load_normalized_deals()
         return compute_cross_board_delivery(
-            wo_df, deals_df, wo_items=wo_items, sector=_opt_str("sector")
+            wo_df,
+            deals_df,
+            wo_items=wo_items,
+            sector=_opt_str("sector"),
+            view=_opt_str("view"),
         )
 
     elif name == "get_leadership_update":

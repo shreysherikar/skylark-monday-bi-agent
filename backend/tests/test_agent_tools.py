@@ -109,6 +109,17 @@ def test_execute_cross_board_delivery_tool() -> None:
     assert res["total_deals"] == 344
     assert "link_coverage_percentage" in res
     assert "caveats" in res
+    assert "commercial_risk" in res
+    assert "value_variance" in res
+    assert "won_deals_backlog" in res
+
+
+def test_execute_cross_board_delivery_tool_with_view() -> None:
+    """Verifies get_cross_board_delivery executes with view parameter."""
+    res = execute_tool("get_cross_board_delivery", {"view": "unclosed_deal_risk"})
+    assert res["view"] == "unclosed_deal_risk"
+    assert "risk_orders" in res["commercial_risk"]
+    assert res["commercial_risk"]["unclosed_deal_risk_count"] >= 0
 
 
 def test_execute_leadership_update_tool() -> None:

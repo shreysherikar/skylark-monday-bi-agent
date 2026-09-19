@@ -446,8 +446,9 @@ def normalize_work_orders_df(df: pd.DataFrame) -> pd.DataFrame:
 
     # 1. Deal name masked
     col_name = "Deal name masked"
-    if col_name in working_df.columns:
-        norm_df[col_name] = working_df[col_name].apply(
+    deal_src_col = col_name if col_name in working_df.columns else ("item_name" if "item_name" in working_df.columns else None)
+    if deal_src_col is not None:
+        norm_df[col_name] = working_df[deal_src_col].apply(
             lambda x: str(x).strip() if pd.notna(x) and str(x).strip().lower() not in ("", "nan", "none", "null", "unnamed", "unnamed item") else None
         )
 
@@ -668,6 +669,11 @@ def normalize_work_orders_df(df: pd.DataFrame) -> pd.DataFrame:
     col_name = "Billing Status"
     if col_name in working_df.columns:
         norm_df[col_name] = working_df[col_name].apply(lambda x: normalize_status(x, "Billing Status"))
+
+    # 39. Linked Deal (Board relation from Monday Connect Boards)
+    for link_col in ["Linked Deal", "Linked Deal__linked_ids"]:
+        if link_col in working_df.columns:
+            norm_df[link_col] = working_df[link_col]
 
     return norm_df
 

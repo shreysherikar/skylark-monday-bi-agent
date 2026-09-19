@@ -250,8 +250,9 @@ def normalize_deals_df(df: pd.DataFrame) -> pd.DataFrame:
 
     # 1. Deal Name (str | None, 2 rows null in data)
     col_name = "Deal Name"
-    if col_name in clean_df.columns:
-        norm_df[col_name] = clean_df[col_name].apply(
+    deal_name_col = col_name if col_name in clean_df.columns else ("item_name" if "item_name" in clean_df.columns else None)
+    if deal_name_col is not None:
+        norm_df[col_name] = clean_df[deal_name_col].apply(
             lambda x: str(x).strip() if pd.notna(x) and str(x).strip() not in ("", "nan", "None") else None
         )
 
