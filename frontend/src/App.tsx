@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { TopNav } from './components/TopNav';
 import { CommandPalette } from './components/CommandPalette';
+import { LandingView } from './views/LandingView';
 import { ChatView } from './views/ChatView';
 import { OverviewView } from './views/OverviewView';
 import { FunnelView } from './views/FunnelView';
@@ -11,7 +12,7 @@ import { ActiveView, ChatMessageItem } from './types';
 import { sendChatMessage } from './api';
 
 export const App: React.FC = () => {
-  const [activeView, setActiveView] = useState<ActiveView>('chat');
+  const [activeView, setActiveView] = useState<ActiveView>('home');
   const [messages, setMessages] = useState<ChatMessageItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState<boolean>(false);
@@ -99,9 +100,17 @@ export const App: React.FC = () => {
           onOpenMobileSidebar={() => setIsMobileSidebarOpen(true)}
           onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
           onRefreshData={handleRefreshData}
+          onLaunchCopilot={() => setActiveView('chat')}
         />
 
-        <div className="view-content-area" key={refreshKey}>
+        <div className={`view-content-area ${activeView === 'chat' ? 'chat-mode' : 'scrollable-mode'}`} key={refreshKey}>
+          {activeView === 'home' && (
+            <LandingView
+              onSelectView={setActiveView}
+              onAskAI={handleSendMessage}
+            />
+          )}
+
           {activeView === 'chat' && (
             <ChatView
               messages={messages}

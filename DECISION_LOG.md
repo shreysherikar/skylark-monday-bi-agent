@@ -40,6 +40,7 @@
 | **Backend Framework**| **FastAPI (Python 3.11+)** | High-performance asynchronous REST framework with native OpenAPI schema validation, Pydantic v2 typing, and seamless single-container static file serving. |
 | **Data Normalization**| **Pandas & Pydantic v2** | Explicit, testable data transformation pipelines. Handles regex parsing across 71 free-text PO quantity units (`5360 HA`, `40MW`, `415Acers`) and Excel serial date conversions. |
 | **Frontend UI** | **React 18 + Vite 5 (TypeScript)** | Executive dark-mode glassmorphic dashboard with instant keyboard navigation (`⌘K` Command Palette), real-time telemetry cards, cross-board alignment matrix, and dynamic API binding. |
+| **3D Visual Engine** | **Three.js (WebGL)** | Procedural 3D industrial quadcopter UAV with organic hover bobbing, mouse parallax tilt, rotating carbon propellers, and illuminated Earth operations globe running at 60 FPS. |
 | **Deployment** | **AWS ECS Express Mode (AWS Fargate)** | Serverless container deployment in AWS `ap-south-1` via Amazon ECR, providing rapid zero-setup evaluator access. |
 | **Testing** | **Pytest & Pytest-Cov** | 132 comprehensive unit and integration tests (94.07% coverage) enforcing strict coverage on normalization, arithmetic precision, and edge cases. |
 
@@ -50,6 +51,9 @@
 * **Deterministic Python Analytics vs. In-Prompt Arithmetic**:
   * *Trade-off*: Writing 10+ deterministic Python analytics functions and 132 unit tests required significantly more engineering effort than asking Claude/Groq to "analyze this table."
   * *Why*: LLMs frequently hallucinate calculations over real-world data with missing values. The architectural separation guarantees that every number in the executive briefing matches Monday.com ground truth.
+* **Deterministic Tool Payload Compaction for LLM Context**:
+  * *Trade-off*: Truncating raw 50-row array dumps (e.g. `linked_items`) into total counts and representative 3–4 item previews in the LLM tool return, while providing full data payloads to the REST endpoints.
+  * *Why*: Upstream LLMs (e.g. Groq on-demand tier) enforce strict 8,000 TPM rate limits. Passing 35,500+ characters of raw JSON triggered HTTP 413 Payload Too Large failures. Compacting tool outputs preserves 100% of mathematical truths, KPIs, and caveats while keeping prompts comfortably under 1,500 tokens.
 * **Single-Container Deployment vs. Microservices Sprawl**:
   * *Trade-off*: Bundling the compiled React SPA inside the FastAPI container rather than provisioning separate AWS Amplify and ECS clusters.
   * *Why*: Senior engineering prioritizes zero-configuration operational reliability, reproducible deployments, and sub-second container cold starts over unneeded infrastructure sprawl.

@@ -21,6 +21,12 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
 
   const commands: CommandItem[] = [
     {
+      id: 'nav-home',
+      title: 'Go to Product Tour & Platform Capabilities',
+      category: 'Navigation',
+      action: () => onSelectView('home'),
+    },
+    {
       id: 'nav-chat',
       title: 'Go to AI Copilot Chat',
       category: 'Navigation',

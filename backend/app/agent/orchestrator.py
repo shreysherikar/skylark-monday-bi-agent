@@ -71,6 +71,88 @@ def sanitize_currency_symbols(text: str) -> str:
     return cleaned
 
 
+def _compact_tool_output_for_llm(fn_name: str, tool_output: Any) -> Any:
+    """Compacts tool output payloads so they fit comfortably within upstream LLM context limits (e.g. Groq 8000 TPM limit).
+    
+    Preserves 100% of KPIs, summary totals, percentages, breakdowns, and caveats, while truncating
+    excessively large raw item record lists to concise sample previews.
+    """
+    if not isinstance(tool_output, dict):
+        return tool_output
+
+    out = dict(tool_output)
+
+    if fn_name == "get_leadership_update":
+        rev = out.get("revenue_kpis") or {}
+        pipe = out.get("pipeline_kpis") or {}
+        deliv = out.get("delivery_kpis") or {}
+        return {
+            "period": out.get("period"),
+            "markdown_briefing": out.get("markdown_briefing"),
+            "summary_kpis": {
+                "active_pipeline_unweighted_value": pipe.get("active_pipeline_unweighted_value"),
+                "active_pipeline_weighted_value": pipe.get("active_pipeline_weighted_value"),
+                "won_deals_total_value": pipe.get("won_deals_total_value"),
+                "total_order_value_excl_gst": rev.get("total_order_value_excl_gst"),
+                "total_billed_value_excl_gst": rev.get("total_billed_value_excl_gst"),
+                "total_collected_value_incl_gst": rev.get("total_collected_value_incl_gst"),
+                "net_receivables": rev.get("net_receivables"),
+                "gross_positive_receivables": rev.get("gross_positive_receivables"),
+                "credit_balance_total": rev.get("credit_balance_total"),
+                "matched_orders_count": deliv.get("matched_orders_count"),
+                "total_work_orders": deliv.get("total_work_orders"),
+                "link_coverage_percentage": deliv.get("link_coverage_percentage"),
+                "completed_and_won_count": deliv.get("completed_and_won_count"),
+            },
+            "caveats": pipe.get("caveats", []) + rev.get("caveats", []) + deliv.get("caveats", []),
+        }
+
+    elif fn_name == "get_cross_board_delivery":
+        if "linked_items" in out and isinstance(out["linked_items"], list):
+            items = out["linked_items"]
+            out["total_linked_items"] = len(items)
+            out["sample_linked_items"] = [
+                {
+                    "wo_serial": it.get("wo_serial"),
+                    "deal_name": it.get("deal_name"),
+                    "deal_status": it.get("deal_status"),
+                    "wo_execution_status": it.get("wo_execution_status"),
+                    "wo_amount_excl_gst": it.get("wo_amount_excl_gst"),
+                    "is_commercial_risk": it.get("is_commercial_risk"),
+                    "risk_reason": it.get("risk_reason"),
+                }
+                for it in items[:4]
+            ]
+            del out["linked_items"]
+
+        if "matched_sample" in out:
+            del out["matched_sample"]
+
+        if "commercial_risk" in out and isinstance(out["commercial_risk"], dict):
+            risk_dict = dict(out["commercial_risk"])
+            if "risk_orders" in risk_dict and isinstance(risk_dict["risk_orders"], list):
+                risk_dict["risk_orders_sample"] = risk_dict["risk_orders"][:4]
+                risk_dict["total_risk_orders_count"] = len(risk_dict["risk_orders"])
+                del risk_dict["risk_orders"]
+            out["commercial_risk"] = risk_dict
+
+        if "won_deals_backlog" in out and isinstance(out["won_deals_backlog"], dict):
+            backlog_dict = dict(out["won_deals_backlog"])
+            if "sample_won_deals_without_wo" in backlog_dict and isinstance(backlog_dict["sample_won_deals_without_wo"], list):
+                backlog_dict["sample_won_deals_without_wo"] = backlog_dict["sample_won_deals_without_wo"][:4]
+            out["won_deals_backlog"] = backlog_dict
+
+    elif fn_name == "get_data_quality_report":
+        if "gst_check" in out and isinstance(out["gst_check"], dict):
+            gst = dict(out["gst_check"])
+            if "discrepancies" in gst and isinstance(gst["discrepancies"], list):
+                gst["sample_discrepancies"] = gst["discrepancies"][:4]
+                gst["total_discrepancies"] = len(gst["discrepancies"])
+                del gst["discrepancies"]
+            out["gst_check"] = gst
+
+    return out
+
 
 @dataclass
 class AgentResponse:
@@ -261,7 +343,8 @@ class AgentOrchestrator:
                         for c in tool_output["caveats"]:
                             if c not in collected_caveats:
                                 collected_caveats.append(c)
-                    content_str = json.dumps(tool_output, default=str)
+                    compacted = _compact_tool_output_for_llm(fn_name, tool_output)
+                    content_str = json.dumps(compacted, default=str)
                 except Exception as ex:
                     logger.exception("Error executing tool '%s' via Groq dispatcher", fn_name)
                     content_str = json.dumps({"error": str(ex)})

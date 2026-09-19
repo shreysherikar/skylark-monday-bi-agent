@@ -23,8 +23,13 @@ const STARTER_PROMPTS = [
   },
   {
     icon: Layers,
-    label: "Compare delivery fulfillment vs tracked deal pipeline",
-    category: "Cross-Board Joins",
+    label: "Are we executing any work orders on deals that haven't been won yet?",
+    category: "Commercial Risk",
+  },
+  {
+    icon: Layers,
+    label: "Show me any contract value variance between sales CRM commitments and work orders",
+    category: "Scope Leakage",
   },
   {
     icon: ShieldAlert,

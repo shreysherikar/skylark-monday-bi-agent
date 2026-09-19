@@ -126,11 +126,12 @@ Queries with ambiguous parameters trigger clarifying questions with interactive 
 
 | Domain | Technology | Justification |
 | :--- | :--- | :--- |
-| **LLM Reasoning** | Groq SDK (`openai/gpt-oss-120b` / `llama-3.3-70b-versatile`) | Ultra-fast tool-calling loop (~500ms) with zero arithmetic hallucination |
+| **LLM Reasoning** | Groq SDK (`openai/gpt-oss-120b` / `llama-3.3-70b-versatile`) | Ultra-fast tool-calling loop (~500ms) with deterministic tool payload compaction |
 | **MCP Server** | Python `mcp` SDK + Monday.com GraphQL v2 | Standardized, schema-aware read-only board introspection and data extraction |
 | **Backend API** | FastAPI (Python 3.11+) | Asynchronous, typed REST endpoints with automatic OpenAPI documentation |
 | **Data Engine** | Pandas & Pydantic v2 | Explicit data normalization, validation, and deterministic analytics |
-| **Frontend UI** | React 18, Vite 5, TypeScript, Tailwind CSS | High-performance dashboard with glassmorphism design and live telemetry |
+| **Frontend UI** | React 18, Vite 5, TypeScript | High-performance dashboard with glassmorphism design and live telemetry |
+| **3D WebGL Engine** | Three.js | Procedural 3D industrial quadcopter UAV, hover physics, and illuminated Earth operations globe |
 | **Cloud Hosting** | AWS ECS Express Mode (AWS Fargate) + Amazon ECR | Production serverless containerization in AWS `ap-south-1` |
 | **Testing** | Pytest, Pytest-Cov, AnyIO, Ruff, Mypy | 132 automated tests, 94.07% coverage, strict type checks |
 
@@ -170,8 +171,15 @@ skylark-monday-bi-agent/
 │   │   ├── App.tsx                  # Root layout with sidebar navigation and view switcher
 │   │   ├── api.ts                   # Typed API client for FastAPI backend
 │   │   ├── types.ts                 # Domain models and TypeScript contracts
-│   │   ├── components/              # Chat input, messages, top nav, command palette
-│   │   └── views/                   # Overview, Funnel, Delivery, and Quality dashboards
+│   │   ├── components/              # 3D WebGL UAV scene, chat dock, command palette, nav
+│   │   │   ├── ThreeDroneOperationsScene.tsx # Procedural 3D industrial quadcopter UAV WebGL scene
+│   │   │   ├── DroneOperationsHeroVisual.tsx # Interactive aerospace telemetry and 3D visual container
+│   │   │   ├── ChatInput.tsx        # Aerospace glass input dock with auto-resize and send button
+│   │   │   ├── ChatMessage.tsx      # Markdown narrative rendering and risk alert callouts
+│   │   │   ├── CommandPalette.tsx   # Instant ⌘K search and natural language shortcuts
+│   │   │   └── TopNav.tsx / Sidebar.tsx # Aerospace HUD header, breadcrumbs, and board status
+│   │   ├── hooks/                   # use3DTilt cursor parallax and useApiResource data hooks
+│   │   └── views/                   # Landing tour, Overview, Funnel, Delivery, Quality, Chat
 │   └── package.json
 │
 ├── infra/

@@ -32,7 +32,7 @@ export interface ChatMessageItem {
   isError?: boolean;
 }
 
-export type ActiveView = 'chat' | 'overview' | 'funnel' | 'delivery' | 'quality';
+export type ActiveView = 'home' | 'chat' | 'overview' | 'funnel' | 'delivery' | 'quality';
 
 export interface QualityCaveatMetrics {
   weighted_pipeline: {
