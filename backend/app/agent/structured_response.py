@@ -97,17 +97,17 @@ def build_revenue_structured(tool_output: dict[str, Any]) -> StructuredCopilotRe
         KpiItem(
             label="Total Booked Scope (Excl. GST)",
             value=f"₹{order_val_excl:,.2f}",
-            context=f"Across {total_wo} work orders",
+            context=f"Bookings (by PO date) across {total_wo} work orders",
         ),
         KpiItem(
             label="Total Billed Revenue (Excl. GST)",
             value=f"₹{billed_excl:,.2f}",
-            context=f"Incl. GST: ₹{billed_incl:,.2f}",
+            context=f"Incl. GST: ₹{billed_incl:,.2f} (All-time)",
         ),
         KpiItem(
             label="Collections (Incl. GST)",
             value=f"₹{collected:,.2f}",
-            context="Recorded payments received",
+            context="Recorded payments received (All-time)",
         ),
         KpiItem(
             label="Net Outstanding Receivables",
@@ -115,6 +115,16 @@ def build_revenue_structured(tool_output: dict[str, Any]) -> StructuredCopilotRe
             context=f"Gross: ₹{gross_rec:,.2f} (Credit balances: ₹{credit_total:,.2f})",
         ),
     ]
+
+    if tool_output.get("period"):
+        kpis.insert(
+            0,
+            KpiItem(
+                label=f"Period Bookings ({tool_output['period']}, Excl. GST)",
+                value=f"₹{order_val_excl:,.2f}",
+                context="Time-sliced by Date of PO/LOI",
+            ),
+        )
 
     risks: list[RiskItem] = []
     if credit_accounts > 0:
@@ -207,6 +217,17 @@ def build_pipeline_structured(tool_output: dict[str, Any]) -> StructuredCopilotR
             context=f"Out of {total_deals} total deals",
         ),
     ]
+
+    if tool_output.get("win_rate_percentage") is not None:
+        wr = tool_output["win_rate_percentage"]
+        sample = tool_output.get("win_rate_sample_size", won_count + lost_count)
+        kpis.append(
+            KpiItem(
+                label="Win Rate",
+                value=f"{wr}%",
+                context=f"{won_count} won / {sample} decided deals (Open/On Hold excluded)",
+            )
+        )
 
     risks: list[RiskItem] = []
     if missing_prob > 0:

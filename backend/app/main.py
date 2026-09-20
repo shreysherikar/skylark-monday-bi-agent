@@ -102,9 +102,28 @@ async def root(request: Request) -> Any:
     }
 
 
+import time
+from collections import defaultdict
+
+_rate_limit_history: dict[str, list[float]] = defaultdict(list)
+RATE_LIMIT_WINDOW_SECONDS = 60.0
+RATE_LIMIT_MAX_REQUESTS = 60
+
+
 @app.post("/api/chat", response_model=ChatResponse)
-async def chat_endpoint(request: ChatRequest) -> ChatResponse:
-    """Conversational BI chat endpoint orchestrating Claude tool use and data caveats."""
+async def chat_endpoint(request: ChatRequest, raw_request: Request) -> ChatResponse:
+    """Conversational BI chat endpoint orchestrating Groq tool use and data caveats."""
+    client_ip = raw_request.client.host if raw_request.client else "127.0.0.1"
+    now = time.time()
+    valid_times = [t for t in _rate_limit_history[client_ip] if now - t < RATE_LIMIT_WINDOW_SECONDS]
+    if len(valid_times) >= RATE_LIMIT_MAX_REQUESTS:
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Rate limit exceeded. Too many requests. Please wait a moment before retrying.",
+        )
+    valid_times.append(now)
+    _rate_limit_history[client_ip] = valid_times
+
     if not request.message.strip():
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,

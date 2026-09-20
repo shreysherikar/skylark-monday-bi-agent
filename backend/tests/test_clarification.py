@@ -33,19 +33,16 @@ def test_vague_time_queries_trigger_clarification() -> None:
         assert "clarify" in res.clarification_message.lower() or "date range" in res.clarification_message.lower()
 
 
-def test_quarter_boundary_queries_trigger_clarification() -> None:
-    """Queries mentioning 'this quarter' or 'last quarter' must clarify Fiscal vs Calendar year."""
-    quarter_queries = [
-        "What is our pipeline this quarter?",
-        "Show me total revenue for last quarter",
-        "How is the energy sector doing current quarter?",
-    ]
+def test_quarter_queries_proceed_without_clarification() -> None:
+    """Relative quarter queries (e.g. 'this quarter') proceed directly without blocking modal, extracting period and sector."""
+    flagship = check_query_ambiguity("How's our pipeline for the energy sector this quarter?")
+    assert flagship.needs_clarification is False
+    assert flagship.extracted_entities.get("sector") == "Energy"
+    assert flagship.extracted_entities.get("period") == "this quarter"
 
-    for q in quarter_queries:
-        res = check_query_ambiguity(q)
-        assert res.needs_clarification is True
-        assert res.ambiguity_type == "time"
-        assert any("fiscal" in opt.lower() for opt in res.suggested_options)
+    rev_last_q = check_query_ambiguity("Show me total revenue for last quarter")
+    assert rev_last_q.needs_clarification is False
+    assert rev_last_q.extracted_entities.get("period") == "last quarter"
 
 
 def test_sector_exact_and_synonym_extraction() -> None:

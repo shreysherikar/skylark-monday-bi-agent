@@ -16,9 +16,12 @@ import re
 from dataclasses import dataclass, field
 from typing import Any
 
+from app.data.date_resolver import get_current_ist_date, get_indian_fy_for_date
+
 KNOWN_SECTORS: list[str] = [
     "Renewables",
     "Powerline",
+    "Energy",
     "Mining",
     "Railways",
     "Tender",
@@ -32,7 +35,7 @@ SECTOR_SYNONYMS: dict[str, str] = {
     "renewable": "Renewables",
     "solar": "Renewables",
     "wind": "Renewables",
-    "energy": "Renewables",
+    "energy": "Energy",
     "green energy": "Renewables",
     "powerline": "Powerline",
     "powerlines": "Powerline",
@@ -58,7 +61,6 @@ VAGUE_TIME_PATTERNS: list[re.Pattern] = [
     re.compile(r"\brecently\b", re.IGNORECASE),
     re.compile(r"\blately\b", re.IGNORECASE),
     re.compile(r"\bpast few (?:days|weeks|months)\b", re.IGNORECASE),
-    re.compile(r"\blately\b", re.IGNORECASE),
     re.compile(r"\bover time\b", re.IGNORECASE),
 ]
 
@@ -155,6 +157,8 @@ def check_query_ambiguity(query: str) -> ClarificationResult:
         match = pattern.search(cleaned)
         if match:
             vague_phrase = match.group(0)
+            cur_d = get_current_ist_date()
+            cur_fy, cur_q, _, _ = get_indian_fy_for_date(cur_d)
             return ClarificationResult(
                 needs_clarification=True,
                 ambiguity_type="time",
@@ -162,29 +166,16 @@ def check_query_ambiguity(query: str) -> ClarificationResult:
                     f"You mentioned '{vague_phrase}'. To provide precise figures, could you clarify the date range? "
                     "For example: last 30 days, last 90 days, or full fiscal year?"
                 ),
-                suggested_options=["Last 30 days", "Last 90 days", "Current FY25-26", "All time"],
+                suggested_options=["Last 30 days", "Last 90 days", f"Current {cur_fy} Q{cur_q}", f"Full {cur_fy}", "All time"],
                 extracted_entities=entities,
             )
 
-    # 2. Check for quarter ambiguity (Fiscal Year vs Calendar Year)
+    # 2. Extract quarter timeframe (defaults deterministically to Indian FY in IST without blocking modal)
     for pattern in QUARTER_PATTERNS:
         match = pattern.search(cleaned)
         if match:
-            q_phrase = match.group(0)
-            return ClarificationResult(
-                needs_clarification=True,
-                ambiguity_type="time",
-                clarification_message=(
-                    f"You asked about '{q_phrase}'. Should we evaluate this against the Indian Fiscal Year "
-                    "(e.g., Q4 FY25-26: Jan–Mar) or standard Calendar Year?"
-                ),
-                suggested_options=[
-                    "Indian Fiscal Year (Q4 FY25-26: Jan-Mar)",
-                    "Calendar Year (Q1: Jan-Mar)",
-                    "All time",
-                ],
-                extracted_entities=entities,
-            )
+            entities["period"] = match.group(0).lower()
+            break
 
     # 3. Check for sector mentions and ambiguity
     sector, _conf, is_ambiguous = extract_sector_entity(cleaned)
@@ -198,7 +189,7 @@ def check_query_ambiguity(query: str) -> ClarificationResult:
                     f"Did you mean the '{sector}' sector? The system tracks: "
                     f"{', '.join(KNOWN_SECTORS)}."
                 ),
-                suggested_options=[sector, "Renewables", "Powerline", "Mining", "Railways", "All Sectors"],
+                suggested_options=[sector, "Renewables", "Powerline", "Energy", "Mining", "Railways", "All Sectors"],
                 extracted_entities=entities,
             )
 

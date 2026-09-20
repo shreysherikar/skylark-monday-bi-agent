@@ -334,3 +334,129 @@ def test_get_data_quality_summary(normalized_data) -> None:
     assert q_summary["deals"]["total_rows"] == 344
 
 
+def test_pipeline_temporal_filtering_historical_and_empty_quarter(normalized_data) -> None:
+    """Verifies temporal filtering applies anchor rules and handles empty quarters with nearest benchmarks."""
+    from datetime import date
+    _, norm_deals = normalized_data
+
+    # Q4 FY25-26: Jan 1, 2026 to Mar 31, 2026 (has historical deals)
+    q4_res = compute_pipeline_summary(norm_deals, period="Q4 FY25-26")
+    assert q4_res["period"] == "Q4 FY25-26"
+    assert q4_res["is_empty_period"] is False
+    assert q4_res["total_deals"] > 0
+    assert q4_res["total_deals"] < 344
+    assert q4_res["anchor_stats"]["close_date_count"] > 0 or q4_res["anchor_stats"]["tentative_fallback_count"] > 0
+
+    # Current Quarter on Sept 20, 2026: Q2 FY26-27 (empty period trap)
+    ref_date = date(2026, 9, 20)
+    current_q_res = compute_pipeline_summary(norm_deals, period="this quarter", reference_date=ref_date)
+    assert current_q_res["is_empty_period"] is True
+    assert current_q_res["total_deals"] == 0
+    assert current_q_res["active_pipeline_unweighted_value"] == 0.0
+    assert current_q_res["won_deals_total_value"] == 0.0
+    assert current_q_res["empty_period_explanation"] is not None
+    assert "Q2 FY26-27" in current_q_res["period"]
+    assert len(current_q_res["nearest_quarters_data"]) > 0
+    # Nearest quarters data includes FY25-26 quarters with activity
+    quarters = [q["quarter"] for q in current_q_res["nearest_quarters_data"]]
+    assert any("FY25-26" in q for q in quarters)
+
+
+def test_pipeline_win_rate_and_owner_rankings(normalized_data) -> None:
+    """Verifies win rate calculation Won/(Won+Dead) and owner ranking by won value."""
+    _, norm_deals = normalized_data
+    summary = compute_pipeline_summary(norm_deals)
+
+    assert "win_rate_percentage" in summary
+    assert "win_rate_sample_size" in summary
+    # Win rate = Won / (Won + Dead)
+    expected_decided = summary["won_deals_count"] + summary["lost_or_dormant_count"]
+    assert summary["win_rate_sample_size"] == expected_decided
+    expected_win_rate = round(summary["won_deals_count"] / expected_decided * 100.0, 1)
+    assert summary["win_rate_percentage"] == expected_win_rate
+
+    # Owner breakdown
+    assert "owner_breakdown" in summary
+    owners = summary["owner_breakdown"]
+    assert len(owners) > 0
+    # Ranked by won value descending
+    for i in range(len(owners) - 1):
+        assert owners[i]["won_value"] >= owners[i + 1]["won_value"]
+    # Top owner is OWNER_003
+    assert owners[0]["owner_code"] == "OWNER_003"
+    assert owners[0]["won_deals"] > 0
+
+
+def test_revenue_temporal_filtering_and_bookings_label(normalized_data) -> None:
+    """Verifies Work Orders time slicing uses Date of PO/LOI, labels as Bookings, and detects empty quarters."""
+    from datetime import date
+    norm_wo, _ = normalized_data
+
+    # Q1 FY25-26 has known bookings
+    q1_res = compute_revenue_summary(norm_wo, period="Q1 FY25-26")
+    assert q1_res["period"] == "Q1 FY25-26"
+    assert q1_res["is_empty_period"] is False
+    assert q1_res["total_work_orders"] > 0
+    assert q1_res["period_bookings_excl_gst"] > 0
+    assert q1_res["metric_labels"]["order_value"] == "Bookings (by PO date)"
+
+    # Refusal notice for DSO / aging
+    assert "dso_refusal_reason" in q1_res
+    assert "100% null" in q1_res["dso_refusal_reason"]
+
+    # Current quarter (empty)
+    ref_date = date(2026, 9, 20)
+    current_q_res = compute_revenue_summary(norm_wo, period="this quarter", reference_date=ref_date)
+    assert current_q_res["is_empty_period"] is True
+    assert current_q_res["total_work_orders"] == 0
+    assert current_q_res["period_bookings_excl_gst"] == 0.0
+    assert len(current_q_res["nearest_quarters_data"]) > 0
+
+    # BD/KAM Owner breakdown
+    assert "owner_breakdown" in q1_res
+    owners = q1_res["owner_breakdown"]
+    assert len(owners) > 0
+    for i in range(len(owners) - 1):
+        assert owners[i]["total_booked_excl_gst"] >= owners[i + 1]["total_booked_excl_gst"]
+
+
+def test_energy_sector_aggregation_renewables_and_powerline(normalized_data) -> None:
+    """Verifies sector='Energy' aggregates Renewables + Powerline and returns sub-breakdowns."""
+    norm_wo, norm_deals = normalized_data
+
+    # Deals pipeline for Energy
+    energy_pipe = compute_pipeline_summary(norm_deals, sector="Energy")
+    renewables_pipe = compute_pipeline_summary(norm_deals, sector="Renewables")
+    powerline_pipe = compute_pipeline_summary(norm_deals, sector="Powerline")
+
+    assert energy_pipe["total_deals"] == renewables_pipe["total_deals"] + powerline_pipe["total_deals"]
+    assert energy_pipe["won_deals_count"] == renewables_pipe["won_deals_count"] + powerline_pipe["won_deals_count"]
+    assert pytest.approx(energy_pipe["won_deals_total_value"], 0.01) == renewables_pipe["won_deals_total_value"] + powerline_pipe["won_deals_total_value"]
+    assert energy_pipe["energy_breakdown"] is not None
+    assert "Renewables" in energy_pipe["energy_breakdown"]
+    assert "Powerline" in energy_pipe["energy_breakdown"]
+
+    # Work orders for Energy
+    energy_rev = compute_revenue_summary(norm_wo, sector="Energy")
+    renewables_rev = compute_revenue_summary(norm_wo, sector="Renewables")
+    powerline_rev = compute_revenue_summary(norm_wo, sector="Powerline")
+
+    assert energy_rev["total_work_orders"] == renewables_rev["total_work_orders"] + powerline_rev["total_work_orders"]
+    assert energy_rev["energy_breakdown"] is not None
+
+
+def test_leadership_update_with_empty_quarter(normalized_data) -> None:
+    """Verifies leadership update displays timeline callout and nearest quarter tables for empty periods."""
+    from datetime import date
+    norm_wo, norm_deals = normalized_data
+    ref_date = date(2026, 9, 20)
+
+    briefing = generate_leadership_update(norm_wo, norm_deals, period="this quarter", reference_date=ref_date)
+    assert briefing["is_empty_period"] is True
+    md = briefing["markdown_briefing"]
+    assert "Timeline Notice" in md
+    assert "Nearest Historical Quarters" in md
+    assert "Win Rate" in md
+    assert "OWNER_003" in md
+
+

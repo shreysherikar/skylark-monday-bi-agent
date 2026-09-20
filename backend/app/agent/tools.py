@@ -1,6 +1,6 @@
-"""Agent tool definitions and dispatcher for Anthropic Claude.
+"""Agent tool definitions and dispatcher for Groq / OpenAI compatible function calling.
 
-Exposes deterministic analytics functions as structured Claude tool schemas.
+Exposes deterministic analytics functions as structured tool schemas.
 All data fetching routes strictly through the read-only Monday MCP tools:
 - get_work_orders()
 - get_deals()
@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
-# Claude Tool Schemas
+# Groq / OpenAI Function Tool Schemas
 # ---------------------------------------------------------------------------
 
 AGENT_TOOLS: list[dict[str, Any]] = [
@@ -42,18 +42,22 @@ AGENT_TOOLS: list[dict[str, Any]] = [
         "description": (
             "Retrieve deterministic pipeline health metrics for deals tracked on Monday.com. "
             "Returns active pipeline value (unweighted and probability-weighted), won deals volume, "
-            "stage breakdown, and sector breakdown. Automatically includes caveats for unrecorded values and probabilities."
+            "stage breakdown, win rate, and sector breakdown. Automatically includes caveats for unrecorded values and probabilities."
         ),
         "input_schema": {
             "type": "object",
             "properties": {
                 "sector": {
                     "type": ["string", "null"],
-                    "description": "Optional sector filter (e.g., 'Renewables', 'Powerline', 'Mining', 'Railways', 'Tender', 'DSP', 'Others'). Omit or null when no sector filter is wanted.",
+                    "description": "Optional sector filter (e.g., 'Renewables', 'Powerline', 'Energy', 'Mining', 'Railways', 'Tender', 'DSP', 'Others'). Omit or null when no sector filter is wanted.",
                 },
                 "stage": {
                     "type": ["string", "null"],
                     "description": "Optional stage category filter ('active', 'won', 'lost'). Omit or null when no stage filter is wanted.",
+                },
+                "period": {
+                    "type": ["string", "null"],
+                    "description": "Optional period or quarter filter (e.g. 'this quarter', 'last quarter', 'Q4 FY25-26', 'FY25-26', 'this month'). Omit or null when analyzing all-time data.",
                 },
             },
             "required": [],
@@ -62,8 +66,8 @@ AGENT_TOOLS: list[dict[str, Any]] = [
     {
         "name": "get_revenue_summary",
         "description": (
-            "Retrieve deterministic revenue, billing, and collection metrics from Work Orders on Monday.com. "
-            "Returns total booking value, billed value (Excl/Incl GST), collected amounts, and net vs gross "
+            "Retrieve deterministic revenue, bookings, billing, and collection metrics from Work Orders on Monday.com. "
+            "Returns total booking value (by PO date), billed value (Excl/Incl GST), collected amounts, and net vs gross "
             "receivables. Isolates credit balances (overpayments) and negative billing adjustments."
         ),
         "input_schema": {
@@ -71,7 +75,11 @@ AGENT_TOOLS: list[dict[str, Any]] = [
             "properties": {
                 "sector": {
                     "type": ["string", "null"],
-                    "description": "Optional sector filter (e.g., 'Renewables', 'Powerline', 'Mining', 'Railways'). Omit or null when no sector filter is wanted.",
+                    "description": "Optional sector filter (e.g., 'Renewables', 'Powerline', 'Energy', 'Mining', 'Railways'). Omit or null when no sector filter is wanted.",
+                },
+                "period": {
+                    "type": ["string", "null"],
+                    "description": "Optional period or quarter filter (e.g. 'this quarter', 'last quarter', 'Q1 FY25-26', 'FY25-26'). Time-slices bookings by PO date. Omit or null when analyzing all-time data.",
                 },
             },
             "required": [],
@@ -93,12 +101,16 @@ AGENT_TOOLS: list[dict[str, Any]] = [
             "properties": {
                 "sector": {
                     "type": ["string", "null"],
-                    "description": "Optional sector filter (e.g., 'Renewables', 'Mining', 'Powerline'). Omit or null when analyzing across all sectors.",
+                    "description": "Optional sector filter (e.g., 'Renewables', 'Mining', 'Powerline', 'Energy'). Omit or null when analyzing across all sectors.",
                 },
                 "view": {
                     "type": ["string", "null"],
                     "enum": ["summary", "unclosed_deal_risk", "value_variance", "won_without_wo", "alignment", None],
                     "description": "Focus view: 'unclosed_deal_risk' (orders at risk on non-won deals), 'value_variance' (deal vs booked contract variance), 'won_without_wo' (won deals lacking work orders), 'alignment' (owner/sector handoff consistency), or 'summary' (all). Default is 'summary'.",
+                },
+                "period": {
+                    "type": ["string", "null"],
+                    "description": "Optional period or quarter filter (e.g. 'this quarter', 'Q4 FY25-26'). Omit or null for all-time data.",
                 },
             },
             "required": [],
@@ -227,11 +239,16 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             deals_df,
             sector=_opt_str("sector"),
             stage=_opt_str("stage"),
+            period=_opt_str("period"),
         )
 
     elif name == "get_revenue_summary":
         wo_df, _ = _load_normalized_work_orders()
-        return compute_revenue_summary(wo_df, sector=_opt_str("sector"))
+        return compute_revenue_summary(
+            wo_df,
+            sector=_opt_str("sector"),
+            period=_opt_str("period"),
+        )
 
     elif name == "get_cross_board_delivery":
         wo_df, wo_items = _load_normalized_work_orders()
@@ -242,6 +259,7 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             wo_items=wo_items,
             sector=_opt_str("sector"),
             view=_opt_str("view"),
+            period=_opt_str("period"),
         )
 
     elif name == "get_leadership_update":

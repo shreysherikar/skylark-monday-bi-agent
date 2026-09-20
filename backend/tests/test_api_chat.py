@@ -165,3 +165,19 @@ def test_quality_endpoint(client: TestClient) -> None:
     assert data["work_orders"]["total_rows"] == 176
     assert data["deals"]["total_rows"] == 344
 
+
+def test_chat_rate_limiting(client: TestClient) -> None:
+    """Verifies rate limiter rejects excessive requests exceeding threshold."""
+    import time
+    from app.main import _rate_limit_history, RATE_LIMIT_MAX_REQUESTS
+    test_ip = "testclient"
+    # Artificially fill the request history
+    _rate_limit_history[test_ip] = [time.time()] * RATE_LIMIT_MAX_REQUESTS
+
+    resp = client.post("/api/chat", json={"message": "ping"})
+    assert resp.status_code == 429
+    assert "Rate limit exceeded" in resp.json()["detail"]
+
+    # Clear after test
+    _rate_limit_history[test_ip] = []
+
