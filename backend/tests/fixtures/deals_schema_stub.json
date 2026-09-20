@@ -1,0 +1,2004 @@
+{
+  "board_id": "5031416803",
+  "board_name": "Deal funnel Data",
+  "description": null,
+  "items_count": 344,
+  "columns": [
+    {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bw75s",
+      "title": "Owner code",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "OWNER_001",
+          "0": "OWNER_002",
+          "2": "OWNER_003",
+          "3": "OWNER_004",
+          "7": "OWNER_005",
+          "4": "OWNER_006",
+          "6": "OWNER_007",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "text_mm7ba5gd",
+      "title": "Client Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bq55t",
+      "title": "Deal Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "On Hold",
+          "2": "Deal Status",
+          "3": "Dead",
+          "7": "Won",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "date_mm7bfzej",
+      "title": "Close Date (A)",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7brd39",
+      "title": "Closure Probability",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "High",
+          "0": "Medium",
+          "2": "Low",
+          "3": "Closure Probability",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "numeric_mm7bm060",
+      "title": "Masked Deal value",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "date_mm7bfk31",
+      "title": "Tentative Close Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7b7pr0",
+      "title": "Deal Stage",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "B. Sales Qualified Leads",
+          "0": "E. Proposal/Commercials Sent",
+          "2": "D. Feasibility",
+          "3": "M. Projects On Hold",
+          "7": "H. Work Order Received",
+          "4": "F. Negotiations",
+          "6": "C. Demo Done",
+          "8": "A. Lead Generated",
+          "9": "Deal Stage",
+          "10": "N. Not relevant at the moment",
+          "11": "L. Project Lost",
+          "12": "O. Not Relevant at all",
+          "13": "J. Invoice sent",
+          "14": "I. POC",
+          "15": "G. Project Won",
+          "16": "Project Completed",
+          "17": "K. Amount Accrued",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "13": {
+            "color": "#ff5ac4",
+            "border": "#e04fac",
+            "var_name": "light-pink"
+          },
+          "14": {
+            "color": "#784bd1",
+            "border": "#8f4dc4",
+            "var_name": "dark-purple"
+          },
+          "15": {
+            "color": "#9cd326",
+            "border": "#89b921",
+            "var_name": "lime-green"
+          },
+          "16": {
+            "color": "#66ccff",
+            "border": "#5ab3e0",
+            "var_name": "turquoise"
+          },
+          "17": {
+            "color": "#757575",
+            "border": "#707070",
+            "var_name": "trolley-grey"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "color_mm7b792r",
+      "title": "Product deal",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Service + Spectra",
+          "0": "Pure Service",
+          "2": "Spectra + DMO",
+          "3": "Hardware",
+          "7": "Dock + DMO + Spectra + Service",
+          "4": "Dock + Spectra + Service",
+          "6": "Dock + DMO + Spectra",
+          "8": "Dock + DMO",
+          "9": "Spectra Deal",
+          "10": "Product deal",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "color_mm7bscaz",
+      "title": "Sector/service",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Tender",
+          "3": "Renewables",
+          "7": "DSP",
+          "4": "Railways",
+          "6": "Construction",
+          "8": "Security and Surveillance",
+          "9": "Sector/service",
+          "10": "Others",
+          "11": "Aviation",
+          "12": "Manufacturing",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "date_mm7baq86",
+      "title": "Created Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    }
+  ],
+  "column_by_id": {
+    "name": {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bw75s": {
+      "id": "color_mm7bw75s",
+      "title": "Owner code",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "OWNER_001",
+          "0": "OWNER_002",
+          "2": "OWNER_003",
+          "3": "OWNER_004",
+          "7": "OWNER_005",
+          "4": "OWNER_006",
+          "6": "OWNER_007",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "text_mm7ba5gd": {
+      "id": "text_mm7ba5gd",
+      "title": "Client Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bq55t": {
+      "id": "color_mm7bq55t",
+      "title": "Deal Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "On Hold",
+          "2": "Deal Status",
+          "3": "Dead",
+          "7": "Won",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "date_mm7bfzej": {
+      "id": "date_mm7bfzej",
+      "title": "Close Date (A)",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7brd39": {
+      "id": "color_mm7brd39",
+      "title": "Closure Probability",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "High",
+          "0": "Medium",
+          "2": "Low",
+          "3": "Closure Probability",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "numeric_mm7bm060": {
+      "id": "numeric_mm7bm060",
+      "title": "Masked Deal value",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "date_mm7bfk31": {
+      "id": "date_mm7bfk31",
+      "title": "Tentative Close Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7b7pr0": {
+      "id": "color_mm7b7pr0",
+      "title": "Deal Stage",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "B. Sales Qualified Leads",
+          "0": "E. Proposal/Commercials Sent",
+          "2": "D. Feasibility",
+          "3": "M. Projects On Hold",
+          "7": "H. Work Order Received",
+          "4": "F. Negotiations",
+          "6": "C. Demo Done",
+          "8": "A. Lead Generated",
+          "9": "Deal Stage",
+          "10": "N. Not relevant at the moment",
+          "11": "L. Project Lost",
+          "12": "O. Not Relevant at all",
+          "13": "J. Invoice sent",
+          "14": "I. POC",
+          "15": "G. Project Won",
+          "16": "Project Completed",
+          "17": "K. Amount Accrued",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "13": {
+            "color": "#ff5ac4",
+            "border": "#e04fac",
+            "var_name": "light-pink"
+          },
+          "14": {
+            "color": "#784bd1",
+            "border": "#8f4dc4",
+            "var_name": "dark-purple"
+          },
+          "15": {
+            "color": "#9cd326",
+            "border": "#89b921",
+            "var_name": "lime-green"
+          },
+          "16": {
+            "color": "#66ccff",
+            "border": "#5ab3e0",
+            "var_name": "turquoise"
+          },
+          "17": {
+            "color": "#757575",
+            "border": "#707070",
+            "var_name": "trolley-grey"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "color_mm7b792r": {
+      "id": "color_mm7b792r",
+      "title": "Product deal",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Service + Spectra",
+          "0": "Pure Service",
+          "2": "Spectra + DMO",
+          "3": "Hardware",
+          "7": "Dock + DMO + Spectra + Service",
+          "4": "Dock + Spectra + Service",
+          "6": "Dock + DMO + Spectra",
+          "8": "Dock + DMO",
+          "9": "Spectra Deal",
+          "10": "Product deal",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "color_mm7bscaz": {
+      "id": "color_mm7bscaz",
+      "title": "Sector/service",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Tender",
+          "3": "Renewables",
+          "7": "DSP",
+          "4": "Railways",
+          "6": "Construction",
+          "8": "Security and Surveillance",
+          "9": "Sector/service",
+          "10": "Others",
+          "11": "Aviation",
+          "12": "Manufacturing",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "date_mm7baq86": {
+      "id": "date_mm7baq86",
+      "title": "Created Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    }
+  },
+  "column_by_title": {
+    "Name": {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    "name": {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    "Owner code": {
+      "id": "color_mm7bw75s",
+      "title": "Owner code",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "OWNER_001",
+          "0": "OWNER_002",
+          "2": "OWNER_003",
+          "3": "OWNER_004",
+          "7": "OWNER_005",
+          "4": "OWNER_006",
+          "6": "OWNER_007",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "owner code": {
+      "id": "color_mm7bw75s",
+      "title": "Owner code",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "OWNER_001",
+          "0": "OWNER_002",
+          "2": "OWNER_003",
+          "3": "OWNER_004",
+          "7": "OWNER_005",
+          "4": "OWNER_006",
+          "6": "OWNER_007",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Client Code": {
+      "id": "text_mm7ba5gd",
+      "title": "Client Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "client code": {
+      "id": "text_mm7ba5gd",
+      "title": "Client Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Deal Status": {
+      "id": "color_mm7bq55t",
+      "title": "Deal Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "On Hold",
+          "2": "Deal Status",
+          "3": "Dead",
+          "7": "Won",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "deal status": {
+      "id": "color_mm7bq55t",
+      "title": "Deal Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "On Hold",
+          "2": "Deal Status",
+          "3": "Dead",
+          "7": "Won",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Close Date (A)": {
+      "id": "date_mm7bfzej",
+      "title": "Close Date (A)",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "close date (a)": {
+      "id": "date_mm7bfzej",
+      "title": "Close Date (A)",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "Closure Probability": {
+      "id": "color_mm7brd39",
+      "title": "Closure Probability",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "High",
+          "0": "Medium",
+          "2": "Low",
+          "3": "Closure Probability",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "closure probability": {
+      "id": "color_mm7brd39",
+      "title": "Closure Probability",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "High",
+          "0": "Medium",
+          "2": "Low",
+          "3": "Closure Probability",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Masked Deal value": {
+      "id": "numeric_mm7bm060",
+      "title": "Masked Deal value",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "masked deal value": {
+      "id": "numeric_mm7bm060",
+      "title": "Masked Deal value",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Tentative Close Date": {
+      "id": "date_mm7bfk31",
+      "title": "Tentative Close Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "tentative close date": {
+      "id": "date_mm7bfk31",
+      "title": "Tentative Close Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "Deal Stage": {
+      "id": "color_mm7b7pr0",
+      "title": "Deal Stage",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "B. Sales Qualified Leads",
+          "0": "E. Proposal/Commercials Sent",
+          "2": "D. Feasibility",
+          "3": "M. Projects On Hold",
+          "7": "H. Work Order Received",
+          "4": "F. Negotiations",
+          "6": "C. Demo Done",
+          "8": "A. Lead Generated",
+          "9": "Deal Stage",
+          "10": "N. Not relevant at the moment",
+          "11": "L. Project Lost",
+          "12": "O. Not Relevant at all",
+          "13": "J. Invoice sent",
+          "14": "I. POC",
+          "15": "G. Project Won",
+          "16": "Project Completed",
+          "17": "K. Amount Accrued",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "13": {
+            "color": "#ff5ac4",
+            "border": "#e04fac",
+            "var_name": "light-pink"
+          },
+          "14": {
+            "color": "#784bd1",
+            "border": "#8f4dc4",
+            "var_name": "dark-purple"
+          },
+          "15": {
+            "color": "#9cd326",
+            "border": "#89b921",
+            "var_name": "lime-green"
+          },
+          "16": {
+            "color": "#66ccff",
+            "border": "#5ab3e0",
+            "var_name": "turquoise"
+          },
+          "17": {
+            "color": "#757575",
+            "border": "#707070",
+            "var_name": "trolley-grey"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "deal stage": {
+      "id": "color_mm7b7pr0",
+      "title": "Deal Stage",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "B. Sales Qualified Leads",
+          "0": "E. Proposal/Commercials Sent",
+          "2": "D. Feasibility",
+          "3": "M. Projects On Hold",
+          "7": "H. Work Order Received",
+          "4": "F. Negotiations",
+          "6": "C. Demo Done",
+          "8": "A. Lead Generated",
+          "9": "Deal Stage",
+          "10": "N. Not relevant at the moment",
+          "11": "L. Project Lost",
+          "12": "O. Not Relevant at all",
+          "13": "J. Invoice sent",
+          "14": "I. POC",
+          "15": "G. Project Won",
+          "16": "Project Completed",
+          "17": "K. Amount Accrued",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "13": {
+            "color": "#ff5ac4",
+            "border": "#e04fac",
+            "var_name": "light-pink"
+          },
+          "14": {
+            "color": "#784bd1",
+            "border": "#8f4dc4",
+            "var_name": "dark-purple"
+          },
+          "15": {
+            "color": "#9cd326",
+            "border": "#89b921",
+            "var_name": "lime-green"
+          },
+          "16": {
+            "color": "#66ccff",
+            "border": "#5ab3e0",
+            "var_name": "turquoise"
+          },
+          "17": {
+            "color": "#757575",
+            "border": "#707070",
+            "var_name": "trolley-grey"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Product deal": {
+      "id": "color_mm7b792r",
+      "title": "Product deal",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Service + Spectra",
+          "0": "Pure Service",
+          "2": "Spectra + DMO",
+          "3": "Hardware",
+          "7": "Dock + DMO + Spectra + Service",
+          "4": "Dock + Spectra + Service",
+          "6": "Dock + DMO + Spectra",
+          "8": "Dock + DMO",
+          "9": "Spectra Deal",
+          "10": "Product deal",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "product deal": {
+      "id": "color_mm7b792r",
+      "title": "Product deal",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Service + Spectra",
+          "0": "Pure Service",
+          "2": "Spectra + DMO",
+          "3": "Hardware",
+          "7": "Dock + DMO + Spectra + Service",
+          "4": "Dock + Spectra + Service",
+          "6": "Dock + DMO + Spectra",
+          "8": "Dock + DMO",
+          "9": "Spectra Deal",
+          "10": "Product deal",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Sector/service": {
+      "id": "color_mm7bscaz",
+      "title": "Sector/service",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Tender",
+          "3": "Renewables",
+          "7": "DSP",
+          "4": "Railways",
+          "6": "Construction",
+          "8": "Security and Surveillance",
+          "9": "Sector/service",
+          "10": "Others",
+          "11": "Aviation",
+          "12": "Manufacturing",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "sector/service": {
+      "id": "color_mm7bscaz",
+      "title": "Sector/service",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Tender",
+          "3": "Renewables",
+          "7": "DSP",
+          "4": "Railways",
+          "6": "Construction",
+          "8": "Security and Surveillance",
+          "9": "Sector/service",
+          "10": "Others",
+          "11": "Aviation",
+          "12": "Manufacturing",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "8": {
+            "color": "#cab641",
+            "border": "#c0ab31",
+            "var_name": "mustered"
+          },
+          "9": {
+            "color": "#ffcb00",
+            "border": "#c0ab1b",
+            "var_name": "yellow"
+          },
+          "10": {
+            "color": "#333333",
+            "border": "#000",
+            "var_name": "soft-black"
+          },
+          "11": {
+            "color": "#bb3354",
+            "border": "#a42d4a",
+            "var_name": "dark-red"
+          },
+          "12": {
+            "color": "#ff007f",
+            "border": "#e01279",
+            "var_name": "dark-pink"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Created Date": {
+      "id": "date_mm7baq86",
+      "title": "Created Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "created date": {
+      "id": "date_mm7baq86",
+      "title": "Created Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    }
+  }
+}

@@ -1,0 +1,2529 @@
+{
+  "board_id": "5031416769",
+  "board_name": "Work_Order_Tracker Data",
+  "description": null,
+  "items_count": 176,
+  "columns": [
+    {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7brgst",
+      "title": "Customer Name Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7bd0x2",
+      "title": "Serial #",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7b7q9y",
+      "title": "Nature of Work",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "One time Project",
+          "0": "Proof of Concept",
+          "2": "Monthly Contract",
+          "3": "Annual Rate Contract",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "text_mm7b25a5",
+      "title": "Last executed month of recurring project",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7br36m",
+      "title": "Execution Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Completed",
+          "0": "Not Started",
+          "2": "Executed until current month",
+          "3": "Ongoing",
+          "7": "Pause / struck",
+          "4": "Partial Completed",
+          "6": "Details pending from Client",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "date_mm7bb2zw",
+      "title": "Data Delivery Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "date_mm7b7wrp",
+      "title": "Date of PO/LOI",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bf2mx",
+      "title": "Document Type",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Purchase Order",
+          "0": "LOA/LOI",
+          "2": "Email Confirmation",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "date_mm7b86bk",
+      "title": "Probable Start Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "date_mm7bjtjd",
+      "title": "Probable End Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7b258g",
+      "title": "BD/KAM Personnel code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bfc8e",
+      "title": "Sector",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Renewables",
+          "3": "Railways",
+          "7": "Construction",
+          "4": "Others",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "text_mm7bqjtm",
+      "title": "Type of Work",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bbysj",
+      "title": "Is any Skylark software platform part of the client deliverables in this deal?",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "NONE",
+          "0": "SPECTRA",
+          "2": "DMO",
+          "3": "SPECTRA + DMO",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "date_mm7bzdeb",
+      "title": "Last invoice date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7bktxc",
+      "title": "latest invoice no.",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7b8txs",
+      "title": "Amount in Rupees (Excl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bv4km",
+      "title": "Amount in Rupees (Incl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bvb4a",
+      "title": "Billed Value in Rupees (Excl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bk3j5",
+      "title": "Billed Value in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bykyx",
+      "title": "Collected Amount in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bhw39",
+      "title": "Amount to be billed in Rs. (Exl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bf86b",
+      "title": "Amount to be billed in Rs. (Incl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bdf52",
+      "title": "Amount Receivable (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7btb68",
+      "title": "AR Priority account",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Priority",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "numeric_mm7bgway",
+      "title": "Quantity by Ops",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7b7cpk",
+      "title": "Quantities as per PO",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bx0yk",
+      "title": "Quantity billed (till date)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "numeric_mm7bvvp9",
+      "title": "Balance in quantity",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bp5wj",
+      "title": "Invoice Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Not billed yet",
+          "0": "Fully Billed",
+          "2": "Partially Billed",
+          "3": "Billed- Visit 7",
+          "7": "Billed- Visit 3",
+          "4": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "text_mm7b5tt9",
+      "title": "Expected Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7b8zpj",
+      "title": "Actual Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7b225m",
+      "title": "Actual Collection Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7bjq1z",
+      "title": "WO Status (billed)",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "Closed",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "text_mm7bcvr9",
+      "title": "Collection status",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "text_mm7b8t6t",
+      "title": "Collection Date",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    {
+      "id": "color_mm7btvr4",
+      "title": "Billing Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Update Required",
+          "0": "Partially Billed",
+          "2": "BIlled",
+          "3": "Not Billable",
+          "7": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    {
+      "id": "board_relation_mm7bqgt",
+      "title": "Linked Deal",
+      "type": "board_relation",
+      "description": null,
+      "settings": {
+        "boardIds": [
+          5031416803
+        ]
+      }
+    }
+  ],
+  "column_by_id": {
+    "name": {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7brgst": {
+      "id": "text_mm7brgst",
+      "title": "Customer Name Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7bd0x2": {
+      "id": "text_mm7bd0x2",
+      "title": "Serial #",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7b7q9y": {
+      "id": "color_mm7b7q9y",
+      "title": "Nature of Work",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "One time Project",
+          "0": "Proof of Concept",
+          "2": "Monthly Contract",
+          "3": "Annual Rate Contract",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "text_mm7b25a5": {
+      "id": "text_mm7b25a5",
+      "title": "Last executed month of recurring project",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7br36m": {
+      "id": "color_mm7br36m",
+      "title": "Execution Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Completed",
+          "0": "Not Started",
+          "2": "Executed until current month",
+          "3": "Ongoing",
+          "7": "Pause / struck",
+          "4": "Partial Completed",
+          "6": "Details pending from Client",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "date_mm7bb2zw": {
+      "id": "date_mm7bb2zw",
+      "title": "Data Delivery Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "date_mm7b7wrp": {
+      "id": "date_mm7b7wrp",
+      "title": "Date of PO/LOI",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bf2mx": {
+      "id": "color_mm7bf2mx",
+      "title": "Document Type",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Purchase Order",
+          "0": "LOA/LOI",
+          "2": "Email Confirmation",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "date_mm7b86bk": {
+      "id": "date_mm7b86bk",
+      "title": "Probable Start Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "date_mm7bjtjd": {
+      "id": "date_mm7bjtjd",
+      "title": "Probable End Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7b258g": {
+      "id": "text_mm7b258g",
+      "title": "BD/KAM Personnel code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bfc8e": {
+      "id": "color_mm7bfc8e",
+      "title": "Sector",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Renewables",
+          "3": "Railways",
+          "7": "Construction",
+          "4": "Others",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "text_mm7bqjtm": {
+      "id": "text_mm7bqjtm",
+      "title": "Type of Work",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bbysj": {
+      "id": "color_mm7bbysj",
+      "title": "Is any Skylark software platform part of the client deliverables in this deal?",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "NONE",
+          "0": "SPECTRA",
+          "2": "DMO",
+          "3": "SPECTRA + DMO",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "date_mm7bzdeb": {
+      "id": "date_mm7bzdeb",
+      "title": "Last invoice date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7bktxc": {
+      "id": "text_mm7bktxc",
+      "title": "latest invoice no.",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7b8txs": {
+      "id": "numeric_mm7b8txs",
+      "title": "Amount in Rupees (Excl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bv4km": {
+      "id": "numeric_mm7bv4km",
+      "title": "Amount in Rupees (Incl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bvb4a": {
+      "id": "numeric_mm7bvb4a",
+      "title": "Billed Value in Rupees (Excl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bk3j5": {
+      "id": "numeric_mm7bk3j5",
+      "title": "Billed Value in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bykyx": {
+      "id": "numeric_mm7bykyx",
+      "title": "Collected Amount in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bhw39": {
+      "id": "numeric_mm7bhw39",
+      "title": "Amount to be billed in Rs. (Exl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bf86b": {
+      "id": "numeric_mm7bf86b",
+      "title": "Amount to be billed in Rs. (Incl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bdf52": {
+      "id": "numeric_mm7bdf52",
+      "title": "Amount Receivable (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7btb68": {
+      "id": "color_mm7btb68",
+      "title": "AR Priority account",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Priority",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "numeric_mm7bgway": {
+      "id": "numeric_mm7bgway",
+      "title": "Quantity by Ops",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7b7cpk": {
+      "id": "text_mm7b7cpk",
+      "title": "Quantities as per PO",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bx0yk": {
+      "id": "numeric_mm7bx0yk",
+      "title": "Quantity billed (till date)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "numeric_mm7bvvp9": {
+      "id": "numeric_mm7bvvp9",
+      "title": "Balance in quantity",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bp5wj": {
+      "id": "color_mm7bp5wj",
+      "title": "Invoice Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Not billed yet",
+          "0": "Fully Billed",
+          "2": "Partially Billed",
+          "3": "Billed- Visit 7",
+          "7": "Billed- Visit 3",
+          "4": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "text_mm7b5tt9": {
+      "id": "text_mm7b5tt9",
+      "title": "Expected Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7b8zpj": {
+      "id": "text_mm7b8zpj",
+      "title": "Actual Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7b225m": {
+      "id": "text_mm7b225m",
+      "title": "Actual Collection Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7bjq1z": {
+      "id": "color_mm7bjq1z",
+      "title": "WO Status (billed)",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "Closed",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "text_mm7bcvr9": {
+      "id": "text_mm7bcvr9",
+      "title": "Collection status",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "text_mm7b8t6t": {
+      "id": "text_mm7b8t6t",
+      "title": "Collection Date",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "color_mm7btvr4": {
+      "id": "color_mm7btvr4",
+      "title": "Billing Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Update Required",
+          "0": "Partially Billed",
+          "2": "BIlled",
+          "3": "Not Billable",
+          "7": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "board_relation_mm7bqgt": {
+      "id": "board_relation_mm7bqgt",
+      "title": "Linked Deal",
+      "type": "board_relation",
+      "description": null,
+      "settings": {
+        "boardIds": [
+          5031416803
+        ]
+      }
+    }
+  },
+  "column_by_title": {
+    "Name": {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    "name": {
+      "id": "name",
+      "title": "Name",
+      "type": "name",
+      "description": null,
+      "settings": {}
+    },
+    "Customer Name Code": {
+      "id": "text_mm7brgst",
+      "title": "Customer Name Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "customer name code": {
+      "id": "text_mm7brgst",
+      "title": "Customer Name Code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Serial #": {
+      "id": "text_mm7bd0x2",
+      "title": "Serial #",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "serial #": {
+      "id": "text_mm7bd0x2",
+      "title": "Serial #",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Nature of Work": {
+      "id": "color_mm7b7q9y",
+      "title": "Nature of Work",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "One time Project",
+          "0": "Proof of Concept",
+          "2": "Monthly Contract",
+          "3": "Annual Rate Contract",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "nature of work": {
+      "id": "color_mm7b7q9y",
+      "title": "Nature of Work",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "One time Project",
+          "0": "Proof of Concept",
+          "2": "Monthly Contract",
+          "3": "Annual Rate Contract",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Last executed month of recurring project": {
+      "id": "text_mm7b25a5",
+      "title": "Last executed month of recurring project",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "last executed month of recurring project": {
+      "id": "text_mm7b25a5",
+      "title": "Last executed month of recurring project",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Execution Status": {
+      "id": "color_mm7br36m",
+      "title": "Execution Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Completed",
+          "0": "Not Started",
+          "2": "Executed until current month",
+          "3": "Ongoing",
+          "7": "Pause / struck",
+          "4": "Partial Completed",
+          "6": "Details pending from Client",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "execution status": {
+      "id": "color_mm7br36m",
+      "title": "Execution Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Completed",
+          "0": "Not Started",
+          "2": "Executed until current month",
+          "3": "Ongoing",
+          "7": "Pause / struck",
+          "4": "Partial Completed",
+          "6": "Details pending from Client",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "6": {
+            "color": "#037f4c",
+            "border": "#006b38",
+            "var_name": "grass-green"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Data Delivery Date": {
+      "id": "date_mm7bb2zw",
+      "title": "Data Delivery Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "data delivery date": {
+      "id": "date_mm7bb2zw",
+      "title": "Data Delivery Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "Date of PO/LOI": {
+      "id": "date_mm7b7wrp",
+      "title": "Date of PO/LOI",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "date of po/loi": {
+      "id": "date_mm7b7wrp",
+      "title": "Date of PO/LOI",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "Document Type": {
+      "id": "color_mm7bf2mx",
+      "title": "Document Type",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Purchase Order",
+          "0": "LOA/LOI",
+          "2": "Email Confirmation",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "document type": {
+      "id": "color_mm7bf2mx",
+      "title": "Document Type",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Purchase Order",
+          "0": "LOA/LOI",
+          "2": "Email Confirmation",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Probable Start Date": {
+      "id": "date_mm7b86bk",
+      "title": "Probable Start Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "probable start date": {
+      "id": "date_mm7b86bk",
+      "title": "Probable Start Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "Probable End Date": {
+      "id": "date_mm7bjtjd",
+      "title": "Probable End Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "probable end date": {
+      "id": "date_mm7bjtjd",
+      "title": "Probable End Date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "BD/KAM Personnel code": {
+      "id": "text_mm7b258g",
+      "title": "BD/KAM Personnel code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "bd/kam personnel code": {
+      "id": "text_mm7b258g",
+      "title": "BD/KAM Personnel code",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Sector": {
+      "id": "color_mm7bfc8e",
+      "title": "Sector",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Renewables",
+          "3": "Railways",
+          "7": "Construction",
+          "4": "Others",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "sector": {
+      "id": "color_mm7bfc8e",
+      "title": "Sector",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Mining",
+          "0": "Powerline",
+          "2": "Renewables",
+          "3": "Railways",
+          "7": "Construction",
+          "4": "Others",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Type of Work": {
+      "id": "text_mm7bqjtm",
+      "title": "Type of Work",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "type of work": {
+      "id": "text_mm7bqjtm",
+      "title": "Type of Work",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Is any Skylark software platform part of the client deliverables in this deal?": {
+      "id": "color_mm7bbysj",
+      "title": "Is any Skylark software platform part of the client deliverables in this deal?",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "NONE",
+          "0": "SPECTRA",
+          "2": "DMO",
+          "3": "SPECTRA + DMO",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "is any skylark software platform part of the client deliverables in this deal?": {
+      "id": "color_mm7bbysj",
+      "title": "Is any Skylark software platform part of the client deliverables in this deal?",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "NONE",
+          "0": "SPECTRA",
+          "2": "DMO",
+          "3": "SPECTRA + DMO",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Last invoice date": {
+      "id": "date_mm7bzdeb",
+      "title": "Last invoice date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "last invoice date": {
+      "id": "date_mm7bzdeb",
+      "title": "Last invoice date",
+      "type": "date",
+      "description": null,
+      "settings": {}
+    },
+    "latest invoice no.": {
+      "id": "text_mm7bktxc",
+      "title": "latest invoice no.",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Amount in Rupees (Excl of GST) (Masked)": {
+      "id": "numeric_mm7b8txs",
+      "title": "Amount in Rupees (Excl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "amount in rupees (excl of gst) (masked)": {
+      "id": "numeric_mm7b8txs",
+      "title": "Amount in Rupees (Excl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Amount in Rupees (Incl of GST) (Masked)": {
+      "id": "numeric_mm7bv4km",
+      "title": "Amount in Rupees (Incl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "amount in rupees (incl of gst) (masked)": {
+      "id": "numeric_mm7bv4km",
+      "title": "Amount in Rupees (Incl of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Billed Value in Rupees (Excl of GST.) (Masked)": {
+      "id": "numeric_mm7bvb4a",
+      "title": "Billed Value in Rupees (Excl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "billed value in rupees (excl of gst.) (masked)": {
+      "id": "numeric_mm7bvb4a",
+      "title": "Billed Value in Rupees (Excl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Billed Value in Rupees (Incl of GST.) (Masked)": {
+      "id": "numeric_mm7bk3j5",
+      "title": "Billed Value in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "billed value in rupees (incl of gst.) (masked)": {
+      "id": "numeric_mm7bk3j5",
+      "title": "Billed Value in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Collected Amount in Rupees (Incl of GST.) (Masked)": {
+      "id": "numeric_mm7bykyx",
+      "title": "Collected Amount in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "collected amount in rupees (incl of gst.) (masked)": {
+      "id": "numeric_mm7bykyx",
+      "title": "Collected Amount in Rupees (Incl of GST.) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Amount to be billed in Rs. (Exl. of GST) (Masked)": {
+      "id": "numeric_mm7bhw39",
+      "title": "Amount to be billed in Rs. (Exl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "amount to be billed in rs. (exl. of gst) (masked)": {
+      "id": "numeric_mm7bhw39",
+      "title": "Amount to be billed in Rs. (Exl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Amount to be billed in Rs. (Incl. of GST) (Masked)": {
+      "id": "numeric_mm7bf86b",
+      "title": "Amount to be billed in Rs. (Incl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "amount to be billed in rs. (incl. of gst) (masked)": {
+      "id": "numeric_mm7bf86b",
+      "title": "Amount to be billed in Rs. (Incl. of GST) (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Amount Receivable (Masked)": {
+      "id": "numeric_mm7bdf52",
+      "title": "Amount Receivable (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "amount receivable (masked)": {
+      "id": "numeric_mm7bdf52",
+      "title": "Amount Receivable (Masked)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "AR Priority account": {
+      "id": "color_mm7btb68",
+      "title": "AR Priority account",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Priority",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "ar priority account": {
+      "id": "color_mm7btb68",
+      "title": "AR Priority account",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Priority",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Quantity by Ops": {
+      "id": "numeric_mm7bgway",
+      "title": "Quantity by Ops",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "quantity by ops": {
+      "id": "numeric_mm7bgway",
+      "title": "Quantity by Ops",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Quantities as per PO": {
+      "id": "text_mm7b7cpk",
+      "title": "Quantities as per PO",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "quantities as per po": {
+      "id": "text_mm7b7cpk",
+      "title": "Quantities as per PO",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Quantity billed (till date)": {
+      "id": "numeric_mm7bx0yk",
+      "title": "Quantity billed (till date)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "quantity billed (till date)": {
+      "id": "numeric_mm7bx0yk",
+      "title": "Quantity billed (till date)",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Balance in quantity": {
+      "id": "numeric_mm7bvvp9",
+      "title": "Balance in quantity",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "balance in quantity": {
+      "id": "numeric_mm7bvvp9",
+      "title": "Balance in quantity",
+      "type": "numbers",
+      "description": null,
+      "settings": {}
+    },
+    "Invoice Status": {
+      "id": "color_mm7bp5wj",
+      "title": "Invoice Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Not billed yet",
+          "0": "Fully Billed",
+          "2": "Partially Billed",
+          "3": "Billed- Visit 7",
+          "7": "Billed- Visit 3",
+          "4": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "invoice status": {
+      "id": "color_mm7bp5wj",
+      "title": "Invoice Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Not billed yet",
+          "0": "Fully Billed",
+          "2": "Partially Billed",
+          "3": "Billed- Visit 7",
+          "7": "Billed- Visit 3",
+          "4": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "4": {
+            "color": "#9d50dd",
+            "border": "#9238af",
+            "var_name": "purple"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Expected Billing Month": {
+      "id": "text_mm7b5tt9",
+      "title": "Expected Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "expected billing month": {
+      "id": "text_mm7b5tt9",
+      "title": "Expected Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Actual Billing Month": {
+      "id": "text_mm7b8zpj",
+      "title": "Actual Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "actual billing month": {
+      "id": "text_mm7b8zpj",
+      "title": "Actual Billing Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Actual Collection Month": {
+      "id": "text_mm7b225m",
+      "title": "Actual Collection Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "actual collection month": {
+      "id": "text_mm7b225m",
+      "title": "Actual Collection Month",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "WO Status (billed)": {
+      "id": "color_mm7bjq1z",
+      "title": "WO Status (billed)",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "Closed",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "wo status (billed)": {
+      "id": "color_mm7bjq1z",
+      "title": "WO Status (billed)",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Open",
+          "0": "Closed",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Collection status": {
+      "id": "text_mm7bcvr9",
+      "title": "Collection status",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "collection status": {
+      "id": "text_mm7bcvr9",
+      "title": "Collection status",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Collection Date": {
+      "id": "text_mm7b8t6t",
+      "title": "Collection Date",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "collection date": {
+      "id": "text_mm7b8t6t",
+      "title": "Collection Date",
+      "type": "text",
+      "description": null,
+      "settings": {}
+    },
+    "Billing Status": {
+      "id": "color_mm7btvr4",
+      "title": "Billing Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Update Required",
+          "0": "Partially Billed",
+          "2": "BIlled",
+          "3": "Not Billable",
+          "7": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "billing status": {
+      "id": "color_mm7btvr4",
+      "title": "Billing Status",
+      "type": "status",
+      "description": null,
+      "settings": {
+        "done_colors": [
+          1
+        ],
+        "labels": {
+          "1": "Update Required",
+          "0": "Partially Billed",
+          "2": "BIlled",
+          "3": "Not Billable",
+          "7": "Stuck",
+          "5": ""
+        },
+        "labels_colors": {
+          "1": {
+            "color": "#00c875",
+            "border": "#00b461",
+            "var_name": "green-shadow"
+          },
+          "0": {
+            "color": "#fdab3d",
+            "border": "#e99729",
+            "var_name": "orange"
+          },
+          "2": {
+            "color": "#df2f4a",
+            "border": "#ce3048",
+            "var_name": "red-shadow"
+          },
+          "3": {
+            "color": "#007eb5",
+            "border": "#3db0df",
+            "var_name": "blue-links"
+          },
+          "7": {
+            "color": "#579bfc",
+            "border": "#4387e8",
+            "var_name": "bright-blue"
+          },
+          "5": {
+            "color": "#c4c4c4",
+            "border": "#b0b0b0",
+            "var_name": "grey"
+          }
+        }
+      }
+    },
+    "Linked Deal": {
+      "id": "board_relation_mm7bqgt",
+      "title": "Linked Deal",
+      "type": "board_relation",
+      "description": null,
+      "settings": {
+        "boardIds": [
+          5031416803
+        ]
+      }
+    },
+    "linked deal": {
+      "id": "board_relation_mm7bqgt",
+      "title": "Linked Deal",
+      "type": "board_relation",
+      "description": null,
+      "settings": {
+        "boardIds": [
+          5031416803
+        ]
+      }
+    }
+  }
+}

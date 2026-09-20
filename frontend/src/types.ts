@@ -6,12 +6,42 @@ export interface ChatRequest {
   }>;
 }
 
+export interface KpiItem {
+  label: string;
+  value: string;
+  context?: string | null;
+}
+
+export interface RiskItem {
+  title: string;
+  detail: string;
+  severity: 'high' | 'medium' | 'low';
+}
+
+export interface EvidenceItem {
+  sources: string[];
+  records_analyzed: number | string;
+  data_coverage?: string | null;
+  calculation: string;
+}
+
+export interface StructuredResponse {
+  summary: string;
+  kpis?: KpiItem[];
+  risks?: RiskItem[];
+  evidence: EvidenceItem;
+  caveats?: string[];
+  follow_ups?: string[];
+  follow_up?: string[];
+}
+
 export interface ChatResponse {
   response: string;
   tools_used: string[];
   caveats: string[];
   needs_clarification: boolean;
   suggested_options: string[];
+  structured?: StructuredResponse | null;
 }
 
 export interface HealthResponse {
@@ -29,6 +59,7 @@ export interface ChatMessageItem {
   caveats?: string[];
   needs_clarification?: boolean;
   suggested_options?: string[];
+  structured?: StructuredResponse | null;
   isError?: boolean;
 }
 

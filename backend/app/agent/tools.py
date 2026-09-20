@@ -13,12 +13,10 @@ structured arguments; deterministic Python functions execute all arithmetic.
 from __future__ import annotations
 
 import logging
-from pathlib import Path
-from typing import Any, cast
+from typing import Any
 
 import pandas as pd
 
-from app.config import settings
 from app.data.analytics import (
     compute_cross_board_delivery,
     compute_pipeline_summary,
@@ -29,8 +27,7 @@ from app.data.analytics import (
 from app.data.normalize_deals import normalize_deals_df
 from app.data.normalize_work_orders import normalize_work_orders_df
 from app.monday_mcp.client import MondayAPIError
-from app.monday_mcp.server import get_board_schema as mcp_get_board_schema
-from app.monday_mcp.server import get_deals, get_work_orders
+from app.monday_mcp.server import get_deals, get_schema, get_work_orders
 
 logger = logging.getLogger(__name__)
 
@@ -166,108 +163,40 @@ AGENT_TOOLS: list[dict[str, Any]] = [
 # Data Caching & Normalization Helpers for Tool Execution
 # ---------------------------------------------------------------------------
 
-def _find_data_file(filename: str) -> Path | None:
-    """Locates a master data Excel file across multiple relative directory depths."""
-    for base in [
-        Path.cwd(),
-        Path.cwd().parent,
-        Path(__file__).resolve().parent,
-        Path(__file__).resolve().parents[2],
-        Path(__file__).resolve().parents[3],
-    ]:
-        candidate = base / filename
-        if candidate.exists():
-            return candidate
-    return None
-
-
-def _get_fallback_board_schema(board_type: str) -> dict[str, Any]:
-    """Provides an offline static schema definition when live Monday API is unreachable."""
-    if board_type == "deals":
-        return {
-            "board_id": settings.monday_deals_board_id or "5031416803",
-            "board_name": "Deal Funnel",
-            "description": "Offline schema fallback for Deal Funnel",
-            "columns": [
-                {"id": "name", "title": "Deal Name", "type": "name"},
-                {"id": "deal_status", "title": "Deal Status", "type": "status"},
-                {"id": "closure_prob", "title": "Closure Probability", "type": "numeric"},
-                {"id": "deal_stage", "title": "Deal Stage", "type": "status"},
-                {"id": "client_code", "title": "Client Code", "type": "text"},
-                {"id": "deal_value", "title": "Deal Value", "type": "numeric"},
-                {"id": "sector", "title": "Sector", "type": "status"},
-            ],
-        }
-    return {
-        "board_id": settings.monday_work_orders_board_id or "5031416769",
-        "board_name": "Work Orders Tracker",
-        "description": "Offline schema fallback for Work Orders",
-        "columns": [
-            {"id": "name", "title": "Serial #", "type": "name"},
-            {"id": "customer_code", "title": "Customer Name Code", "type": "text"},
-            {"id": "execution_status", "title": "Execution Status", "type": "status"},
-            {"id": "expected_revenue", "title": "Expected Revenue (Excl. GST)", "type": "numeric"},
-            {"id": "billed_value", "title": "Billed (Excl. GST)", "type": "numeric"},
-            {"id": "payment_received", "title": "Payment Received", "type": "numeric"},
-            {"id": "linked_deal", "title": "Linked Deal", "type": "board_relation"},
-        ],
-    }
-
-
 def _load_normalized_work_orders() -> tuple[pd.DataFrame, list[dict[str, Any]]]:
-    """Fetches raw work orders from Monday MCP tool and returns normalized DataFrame + raw items.
-
-    Gracefully falls back to the master Excel dataset if Monday API credentials are not
-    configured or Monday API is unreachable.
-    """
+    """Fetches raw work orders from Monday MCP tool and returns normalized DataFrame + raw items."""
     try:
         raw_items = get_work_orders()
-        df_raw = pd.DataFrame(raw_items)
-        # Ensure item_id is retained
-        if "item_id" in df_raw.columns:
-            df_raw["item_id"] = df_raw["item_id"].astype(str)
-        norm_df = normalize_work_orders_df(df_raw)
-        if "item_id" in df_raw.columns:
-            norm_df["item_id"] = df_raw["item_id"].values
-        return norm_df, raw_items
-    except (MondayAPIError, Exception) as exc:
-        logger.warning(
-            "Could not fetch live work orders from Monday (%s); loading offline master snapshot.", exc
-        )
-        file_path = _find_data_file("Work_Order_Tracker Data.xlsx")
-        if file_path and file_path.exists():
-            df_excel = pd.read_excel(file_path, header=1, keep_default_na=False)
-            norm_df = normalize_work_orders_df(df_excel)
-            raw_items = cast("list[dict[str, Any]]", df_excel.to_dict(orient="records"))
-            return norm_df, raw_items
+    except MondayAPIError:
         raise
+    except Exception as exc:
+        raise MondayAPIError(f"Failed to fetch work orders from Monday.com: {exc}") from exc
+
+    df_raw = pd.DataFrame(raw_items)
+    if "item_id" in df_raw.columns:
+        df_raw["item_id"] = df_raw["item_id"].astype(str)
+    norm_df = normalize_work_orders_df(df_raw)
+    if "item_id" in df_raw.columns:
+        norm_df["item_id"] = df_raw["item_id"].values
+    return norm_df, raw_items
 
 
 def _load_normalized_deals() -> pd.DataFrame:
-    """Fetches raw deals from Monday MCP tool and returns normalized DataFrame.
-
-    Gracefully falls back to the master Excel dataset if Monday API credentials are not
-    configured or Monday API is unreachable.
-    """
+    """Fetches raw deals from Monday MCP tool and returns normalized DataFrame."""
     try:
         raw_items = get_deals()
-        df_raw = pd.DataFrame(raw_items)
-        if "item_id" in df_raw.columns:
-            df_raw["item_id"] = df_raw["item_id"].astype(str)
-        norm_df = normalize_deals_df(df_raw)
-        if "item_id" in df_raw.columns:
-            norm_df["item_id"] = df_raw["item_id"].values
-        return norm_df
-    except (MondayAPIError, Exception) as exc:
-        logger.warning(
-            "Could not fetch live deals from Monday (%s); loading offline master snapshot.", exc
-        )
-        file_path = _find_data_file("Deal funnel Data.xlsx")
-        if file_path and file_path.exists():
-            df_excel = pd.read_excel(file_path, keep_default_na=False)
-            norm_df = normalize_deals_df(df_excel)
-            return norm_df
+    except MondayAPIError:
         raise
+    except Exception as exc:
+        raise MondayAPIError(f"Failed to fetch deals from Monday.com: {exc}") from exc
+
+    df_raw = pd.DataFrame(raw_items)
+    if "item_id" in df_raw.columns:
+        df_raw["item_id"] = df_raw["item_id"].astype(str)
+    norm_df = normalize_deals_df(df_raw)
+    if "item_id" in df_raw.columns:
+        norm_df["item_id"] = df_raw["item_id"].values
+    return norm_df
 
 
 # ---------------------------------------------------------------------------
@@ -346,13 +275,7 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
 
     elif name == "get_board_schema":
         b_type = _opt_str("board_type") or "work_orders"
-        try:
-            return mcp_get_board_schema(board_type=b_type)
-        except (MondayAPIError, Exception) as exc:
-            logger.warning(
-                "Could not introspect live Monday board schema (%s); using offline static schema.", exc
-            )
-            return _get_fallback_board_schema(b_type)
+        return get_schema(board_type=b_type)
 
     else:
         raise ValueError(f"Unknown tool requested: '{name}'")

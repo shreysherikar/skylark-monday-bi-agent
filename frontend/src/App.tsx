@@ -53,6 +53,7 @@ export const App: React.FC = () => {
         caveats: result.caveats,
         needs_clarification: result.needs_clarification,
         suggested_options: result.suggested_options,
+        structured: result.structured,
       };
 
       setMessages((prev) => [...prev, assistantMsg]);

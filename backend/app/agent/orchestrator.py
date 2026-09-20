@@ -12,14 +12,17 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from dataclasses import dataclass, field
 from typing import Any
 
-from groq import BadRequestError, Groq
+from groq import BadRequestError, Groq, RateLimitError
 
 from app.agent.clarification import check_query_ambiguity
+from app.agent.structured_response import generate_structured_response
 from app.agent.tools import execute_tool, get_groq_tools
 from app.config import settings
+from app.monday_mcp.client import MondayAPIError
 
 logger = logging.getLogger(__name__)
 
@@ -38,22 +41,32 @@ CORE PRINCIPLES & OPERATIONAL RULES:
 2. MANDATORY DATA-QUALITY CAVEAT INJECTION:
    - Both boards contain genuinely messy data. Deals fields such as Closure Probability, Masked Deal value and Close Date (A) have severe null rates, and Work Orders contain legitimate negative amounts (credit-balance receivables, negative billing adjustments) plus bookkeeping flags (billed value recorded without an invoice status).
    - NEVER quote data-quality statistics from memory or from these instructions. Only ever state the exact counts, percentages and amounts returned by your tool calls, because those reflect the live board state at query time.
-   - Blank values are NOT zero (e.g. unbilled orders, uncollected amounts).
+   - Blank values are NOT zero. When explaining null billed or collected values, state defensibly: "63 orders have null billed values and 98 have null collected amounts. These blanks are treated as unrecorded values rather than zero and should not be interpreted as confirmed outstanding balances without additional billing/collection information." (Do not claim that unrecorded collections definitely remain outstanding).
    - Whenever reporting metrics, you must explicitly integrate and prominently highlight the caveats returned by the tools.
-3. CROSS-BOARD INTELLIGENCE & FOUNDER-LEVEL QUESTIONS:
+   - Data quality labels: Always list all 4 100% null columns (Expected Billing Month, Actual Collection Month, Collection status, Collection Date). In data tables, label completely empty columns as "Fully null billing/collection columns | 4" (never "Rows with fully null billing/collection columns | 176 (100%)"). Report null percentages accurately (Close Date: 92.4% null, Closure Probability: 75.0% null).
+3. RECEIVABLES & BILLING PRECISION:
+   - Do NOT say "as of today" (e.g. do not say "Total Outstanding Receivables (as of today)"), because calculations are across current Work Orders rather than a historical date-cutoff ledger.
+   - Use: "Current Outstanding Receivables" or "Outstanding Receivables Across Current Work Orders", followed by Net receivables: ₹36,291,748.87 (Gross: ₹36,291,913.69).
+4. CROSS-BOARD INTELLIGENCE & FOUNDER-LEVEL QUESTIONS:
    - Use `get_cross_board_delivery` to answer strategic questions connecting CRM Deals to Operations/Fulfillment Work Orders.
-   - Always state the actual live link coverage percentage and count reported by the tool (e.g., 15 of 176 work orders linked via native Monday Connect Boards).
-   - Commercial Risk Audit: When evaluating operational risks or unclosed deals, quote the exact count, total value, and specific high-risk work orders (e.g. operations Ongoing/Completed on Open/Hold deals) from `commercial_risk`.
-   - Value Realization & Variance: When evaluating contract value vs booked/billed revenue, cite the exact contract leakage and scope expansion totals from `value_variance`.
-   - Execution Backlog: When evaluating sales-to-delivery handoff, quote the count and pipeline value of Won deals with no Work Orders recorded from `won_deals_backlog`.
-   - Unlinked Exposure: Never present linked metrics in isolation without highlighting the unlinked work orders exposure from `unlinked_exposure`.
-4. TONE & FORMAT:
+   - Always state the actual live link coverage percentage and count reported by the tool (15 of 176 work orders linked via native Monday Connect Boards).
+   - Commercial Risk: Distinguish "unclosed" from "unwon" and note execution status: "5 confirmed linked work orders are ongoing or completed against deals that are not in a Won state." (Deals are Open, On Hold, or Dead; some orders are already Completed).
+   - Value Realization & Variance: Cite contract leakage (6 projects, ₹114.71M) and scope expansion totals from `value_variance`.
+   - Execution Backlog: Cite the count and pipeline value of Won deals with no Work Orders (96 won deals, ₹101.90M) from `won_deals_backlog`.
+   - Unlinked Exposure: State: "₹184.07M of booked work-order value is currently unlinked to a confirmed CRM deal on Monday.com. The corresponding deal attribution cannot be established from the confirmed native links." NEVER call it "unknown contract status" or imply contracts are unknown.
+5. TONE & GROUNDED RECOMMENDATIONS:
    - Executive, sharp, objective, and transparent about data limitations.
    - Use structured markdown with clear bullet points, bold KPIs, and tables where appropriate.
-5. CURRENCY FORMATTING (STRICT REQUIREMENT):
+   - Do NOT invent arbitrary quantitative targets or policy mandates (e.g., do not say "Aim for ≥50% coverage within 30 days" or "Implement a Deal-Won gate" or "Force required fields in Monday").
+   - Frame suggestions strictly as potential review items:
+     * "Potential action: Review and increase native Deal ↔ Work Order linkage coverage."
+     * "Potential action: Review whether Close Date, Closure Probability, and Deal Value should be mandatory fields."
+6. CURRENCY FORMATTING (STRICT REQUIREMENT):
    - ALL monetary amounts across Skylark Drones are strictly in Indian Rupees (₹ / INR).
    - NEVER use the dollar sign ($) or USD when presenting revenue, deal values, receivables, or pipeline totals.
    - ALWAYS format monetary numbers with the Rupee symbol '₹' (e.g. ₹X,XX,XXX or ₹XX.XM).
+7. API UNAVAILABILITY & ERROR TRANSPARENCY:
+   - If a tool indicates that Monday.com data is temporarily unavailable, state clearly and transparently: "Monday.com data is temporarily unavailable. No fabricated or stale business values were used." Never guess, hallucinate, or fabricate metrics when the upstream data source is unreachable.
 """
 
 
@@ -162,6 +175,7 @@ class AgentResponse:
     caveats: list[str] = field(default_factory=list)
     needs_clarification: bool = False
     suggested_options: list[str] = field(default_factory=list)
+    structured: dict[str, Any] | None = None
 
 
 class AgentOrchestrator:
@@ -234,6 +248,23 @@ class AgentOrchestrator:
                     "The language model service could not process this request "
                     "(invalid tool call). Please try rephrasing the question."
                 ) from ex
+            except RateLimitError as rle:
+                last_error = rle
+                if attempt < max_attempts - 1:
+                    sleep_s = 3.0 * (attempt + 1)
+                    logger.warning(
+                        "Groq rate limit hit (attempt %d/%d); sleeping %.1fs: %s",
+                        attempt + 1,
+                        max_attempts,
+                        sleep_s,
+                        str(rle)[:200],
+                    )
+                    time.sleep(sleep_s)
+                    continue
+                logger.error("Groq rate limit exceeded after %d attempts: %s", max_attempts, str(rle)[:300])
+                raise AgentLLMError(
+                    "The language model service is temporarily rate-limited. Please retry in a few moments."
+                ) from rle
             except Exception as ex:
                 logger.exception("Groq chat completion failed")
                 raise AgentLLMError(
@@ -289,6 +320,7 @@ class AgentOrchestrator:
 
         tools_invoked: list[str] = []
         collected_caveats: list[str] = []
+        last_structured: dict[str, Any] | None = None
         groq_tools = get_groq_tools()
 
         # 3. Tool Calling Loop with Groq
@@ -306,6 +338,7 @@ class AgentOrchestrator:
                     tools_used=tools_invoked,
                     caveats=collected_caveats,
                     needs_clarification=False,
+                    structured=last_structured,
                 )
 
             # Record assistant turn with tool calls
@@ -343,8 +376,19 @@ class AgentOrchestrator:
                         for c in tool_output["caveats"]:
                             if c not in collected_caveats:
                                 collected_caveats.append(c)
+
+                    struct_obj = generate_structured_response(fn_name, tool_output)
+                    if struct_obj is not None:
+                        last_structured = struct_obj.model_dump()
+
                     compacted = _compact_tool_output_for_llm(fn_name, tool_output)
                     content_str = json.dumps(compacted, default=str)
+                except MondayAPIError as mex:
+                    logger.warning("Monday.com API error executing tool '%s': %s", fn_name, mex)
+                    content_str = json.dumps({
+                        "error": "Monday.com data is temporarily unavailable. No fabricated or stale business values were used.",
+                        "details": str(mex),
+                    })
                 except Exception as ex:
                     logger.exception("Error executing tool '%s' via Groq dispatcher", fn_name)
                     content_str = json.dumps({"error": str(ex)})
@@ -362,5 +406,6 @@ class AgentOrchestrator:
             tools_used=tools_invoked,
             caveats=collected_caveats,
             needs_clarification=False,
+            structured=last_structured,
         )
 

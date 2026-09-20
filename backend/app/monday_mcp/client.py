@@ -232,8 +232,8 @@ class MondayClient:
             if not boards:
                 raise MondayBoardNotFoundError(f"Board with ID '{board_id}' was not found.")
 
-            page = boards[0].get("items_page", {})
-            page_items = page.get("items", [])
+            page = boards[0].get("items_page") or {}
+            page_items = page.get("items") or []
             items.extend(page_items)
 
             cursor = page.get("cursor")

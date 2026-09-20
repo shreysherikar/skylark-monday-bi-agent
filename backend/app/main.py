@@ -13,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from app.agent.orchestrator import AgentLLMError, AgentOrchestrator
+from app.agent.structured_response import StructuredCopilotResponse
 from app.config import settings
 from app.monday_mcp.client import MondayAPIError
 
@@ -66,6 +67,10 @@ class ChatResponse(BaseModel):
     caveats: list[str] = Field(default_factory=list)
     needs_clarification: bool = False
     suggested_options: list[str] = Field(default_factory=list)
+    structured: StructuredCopilotResponse | None = Field(
+        default=None,
+        description="Structured copilot payload with executive summary, KPIs, risks, and provenance"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -115,6 +120,7 @@ async def chat_endpoint(request: ChatRequest) -> ChatResponse:
             caveats=result.caveats,
             needs_clarification=result.needs_clarification,
             suggested_options=result.suggested_options,
+            structured=result.structured,  # type: ignore[arg-type]
         )
     except AgentLLMError as llm_ex:
         logger.error("LLM provider failure while processing chat request: %s", llm_ex)

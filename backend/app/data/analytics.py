@@ -168,9 +168,9 @@ def join_work_orders_to_deals(
         else:
             unlinked_wo_serials.append(serial)
 
-    # Offline fallback: if no live Monday links were present (e.g. offline unit testing on Excel),
+    # Offline fallback: only if wo_items was NOT provided (e.g. offline unit testing on Excel),
     # load links from scripts/deal_wo_links.csv if available.
-    if not linked_pairs:
+    if not linked_pairs and wo_items is None:
         for base in [Path.cwd(), Path.cwd().parent, Path(__file__).resolve().parents[3]]:
             csv_candidate = base / "scripts" / "deal_wo_links.csv"
             if csv_candidate.exists():
@@ -470,8 +470,8 @@ def compute_revenue_summary(
         )
     if billed_excl_nulls > 0 or collected_nulls > 0:
         caveats.append(
-            f"Unbilled/Uncollected null tracking: {billed_excl_nulls} orders have unrecorded/null billed values, "
-            f"and {collected_nulls} orders have null collected amounts (treated strictly as unbilled/uncollected, not zero)."
+            f"Unbilled/Uncollected null tracking: {billed_excl_nulls} orders have null billed values and {collected_nulls} have null collected amounts. "
+            f"These blanks are treated as unrecorded values rather than zero and should not be interpreted as confirmed outstanding balances without additional billing/collection information."
         )
     if invoice_status_breakdown.get("UNKNOWN_WITH_BILLING", 0) > 0:
         unk_b_count = invoice_status_breakdown["UNKNOWN_WITH_BILLING"]
@@ -724,8 +724,8 @@ def compute_cross_board_delivery(
     ]
     if len(unclosed_risk_pairs) > 0:
         caveats.append(
-            f"Commercial Risk Alert: {len(unclosed_risk_pairs)} work order(s) totaling ₹{unclosed_risk_value:,.2f} Excl GST "
-            f"are executing on unclosed deals ({high_risk_count} with Completed or Ongoing status)."
+            f"Commercial Risk Alert: {len(unclosed_risk_pairs)} confirmed linked work order(s) totaling ₹{unclosed_risk_value:,.2f} Excl GST "
+            f"are ongoing or completed against deals that are not in a Won state ({high_risk_count} with Completed or Ongoing status)."
         )
     if won_deals_without_wo_cnt > 0:
         caveats.append(
@@ -733,8 +733,8 @@ def compute_cross_board_delivery(
             f"have no linked Work Order recorded."
         )
     caveats.append(
-        f"Unlinked Work Orders Exposure: {len(unlinked_serials_set)} unlinked work order(s) represent ₹{unlinked_val_excl:,.2f} "
-        f"in booked revenue without direct CRM deal attribution."
+        f"Unlinked Work Orders Exposure: {len(unlinked_serials_set)} unlinked work orders represent ₹{unlinked_val_excl:,.2f} "
+        f"of booked work-order value currently unlinked to a confirmed CRM deal on Monday.com. The corresponding deal attribution cannot be established from the confirmed native links."
     )
 
     return {

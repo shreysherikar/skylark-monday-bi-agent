@@ -204,7 +204,7 @@ def get_deals(
     return cleaned_items
 
 
-def get_board_schema(
+def get_schema(
     board_id: str | None = None,
     board_type: str | None = None,
     force_refresh: bool = False,
@@ -244,6 +244,10 @@ def get_board_schema(
     return schema_dict
 
 
+# Python backwards-compatibility alias
+get_board_schema = get_schema
+
+
 # ---------------------------------------------------------------------------
 # MCP Server Registration
 # ---------------------------------------------------------------------------
@@ -270,16 +274,41 @@ def _mcp_get_deals(force_refresh: bool = False) -> list[dict[str, Any]]:
 
 
 @mcp_server.tool(
-    name="get_board_schema",
+    name="get_schema",
     description="Introspect column titles, IDs, and types for a board (use board_type='work_orders' or 'deals').",
 )
-def _mcp_get_board_schema(
+def _mcp_get_schema(
     board_id: str | None = None,
     board_type: str | None = None,
     force_refresh: bool = False,
 ) -> dict[str, Any]:
-    """MCP tool wrapper for get_board_schema."""
-    return get_board_schema(board_id=board_id, board_type=board_type, force_refresh=force_refresh)
+    """MCP tool wrapper for get_schema."""
+    return get_schema(board_id=board_id, board_type=board_type, force_refresh=force_refresh)
+
+
+# ---------------------------------------------------------------------------
+# MCP Resources (Read-Only)
+# ---------------------------------------------------------------------------
+
+@mcp_server.resource("monday://work_orders", description="Raw mapped Work Orders from Monday.com")
+def _mcp_resource_work_orders() -> str:
+    """Read-only MCP resource for Work Orders dataset."""
+    import json
+    return json.dumps(get_work_orders())
+
+
+@mcp_server.resource("monday://deals", description="Raw mapped Deals from Monday.com")
+def _mcp_resource_deals() -> str:
+    """Read-only MCP resource for Deals dataset."""
+    import json
+    return json.dumps(get_deals())
+
+
+@mcp_server.resource("monday://schema/{board_type}", description="Board schema metadata from Monday.com")
+def _mcp_resource_schema(board_type: str) -> str:
+    """Read-only MCP resource for board schema."""
+    import json
+    return json.dumps(get_schema(board_type=board_type))
 
 
 if __name__ == "__main__":
