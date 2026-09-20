@@ -25,6 +25,9 @@ jobs:
           pip install pytest pytest-cov httpx
 
       - name: Run tests
+        env:
+          MONDAY_WORK_ORDERS_BOARD_ID: ${{ secrets.MONDAY_WORK_ORDERS_BOARD_ID || '5031416769' }}
+          MONDAY_DEALS_BOARD_ID: ${{ secrets.MONDAY_DEALS_BOARD_ID || '5031416803' }}
         run: |
           cd backend
           python -m pytest

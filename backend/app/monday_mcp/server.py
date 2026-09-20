@@ -222,9 +222,9 @@ def get_schema(
     if not target_id and board_type:
         norm_type = board_type.strip().lower()
         if norm_type in ("work_orders", "work_order", "wo"):
-            target_id = settings.monday_work_orders_board_id
+            target_id = settings.monday_work_orders_board_id or "5031416769"
         elif norm_type in ("deals", "deal"):
-            target_id = settings.monday_deals_board_id
+            target_id = settings.monday_deals_board_id or "5031416803"
 
     if not target_id:
         raise MondayBoardNotFoundError(

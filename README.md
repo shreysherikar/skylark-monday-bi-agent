@@ -1,6 +1,6 @@
 # Skylark Drones — Monday.com Business Intelligence Agent
 
-[![Live Hosted Prototype](https://img.shields.io/badge/AWS%20ECS%20Express-Live%20Prototype-success?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://sk-72ae323ccddd4e948e038d970204cd22.ecs.ap-south-1.on.aws/)
+[![Live Hosted Prototype](https://img.shields.io/badge/Vercel-Live%20Prototype-success?style=for-the-badge&logo=vercel&logoColor=white)](https://skylark-monday-bi-agent-sable.vercel.app/)
 [![Tests](https://img.shields.io/badge/Tests-169%20Passed-brightgreen?style=for-the-badge&logo=pytest&logoColor=white)](https://pytest.org)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20%2B%20Python%203.11-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/Frontend-React%2018%20%7C%20TypeScript%20%7C%20Vite-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev)
@@ -20,7 +20,7 @@ pip install -e backend/
 npm install --prefix frontend && npm run build --prefix frontend
 python -m uvicorn app.main:app --app-dir backend --port 8000
 ```
-* **Live Hosted URL**: [https://sk-72ae323ccddd4e948e038d970204cd22.ecs.ap-south-1.on.aws/](https://sk-72ae323ccddd4e948e038d970204cd22.ecs.ap-south-1.on.aws/)
+* **Live Hosted URL**: [https://skylark-monday-bi-agent-sable.vercel.app/](https://skylark-monday-bi-agent-sable.vercel.app/)
 * **Interactive OpenAPI Docs**: `http://localhost:8000/docs` | **System Health**: `http://localhost:8000/health`
 * **Rate Limiting**: Public `/api/chat` is protected by a sliding-window rate limiter (60 requests/min per IP).
 

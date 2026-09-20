@@ -11,11 +11,11 @@ class Settings(BaseSettings):
     monday_api_token: str = Field(default="", validation_alias=AliasChoices("MONDAY_API_TOKEN"))
     monday_api_url: str = Field(default="https://api.monday.com/v2", validation_alias=AliasChoices("MONDAY_API_URL"))
     monday_work_orders_board_id: str | None = Field(
-        default=None,
+        default="5031416769",
         validation_alias=AliasChoices("MONDAY_WORK_ORDERS_BOARD_ID", "MONDAY_WO_BOARD_ID")
     )
     monday_deals_board_id: str | None = Field(
-        default=None,
+        default="5031416803",
         validation_alias=AliasChoices("MONDAY_DEALS_BOARD_ID")
     )
     
